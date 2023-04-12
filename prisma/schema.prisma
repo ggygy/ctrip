@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model account {
+  id                String  @id
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  @@unique([provider, providerAccountId], map: "Account_provider_providerAccountId_key")
+}
+
+model navmenu {
+  id         Int            @id @default(autoincrement()) @db.UnsignedInt
+  pid        Int            @default(0) @db.UnsignedInt
+  type       navmenu_type   @default(menu)
+  title      String         @default("") @db.VarChar(50)
+  path       String         @default("") @db.VarChar(100)
+  icon       String         @default("") @db.VarChar(50)
+  weigh      Int            @default(0)
+  status     navmenu_status @default(enable)
+  updatetime DateTime?      @db.DateTime(0)
+  createtime DateTime?      @db.DateTime(0)
+
+  @@index([pid], map: "pid")
+  @@index([weigh], map: "weigh")
+}
+
+model session {
+  id           String   @id
+  sessionToken String   @unique(map: "Session_sessionToken_key")
+  userId       String
+  expires      DateTime
+}
+
+model user {
+  id            String    @id
+  name          String?
+  email         String?   @unique(map: "User_email_key")
+  emailVerified DateTime?
+  image         String?
+}
+
+model verificationtoken {
+  identifier String
+  token      String   @unique(map: "VerificationToken_token_key")
+  expires    DateTime
+
+  @@unique([identifier, token], map: "VerificationToken_identifier_token_key")
+}
+
+enum navmenu_type {
+  route
+  menu_dir
+  menu
+}
+
+enum navmenu_status {
+  enable  @map("1")
+  disable @map("0")
+}

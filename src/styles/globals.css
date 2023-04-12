@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg {
+  vertical-align: baseline;
+}
+
+.dark .img-shadow {
+  width: 250px;
+  -webkit-filter: drop-shadow(5px 10px 5px #090a01e2);
+  filter: drop-shadow(5px 10px 5px #090a01e2);
+}
+
+.img-shadow {
+  width: 250px;
+  -webkit-filter: drop-shadow(5px 10px 5px #28281487);
+  filter: drop-shadow(5px 10px 5px #28281487);
+}
+
+.dark .simplebar-scrollbar::before {
+  background-color: white;
+}
+
+.dark .three-d {
+  text-shadow: 0px 5px 0px #533519;
+}
+
+.three-d {
+  text-shadow: none;
+}
+
+.ant-input-group-addon {
+  background-color: #0086f6 !important;
+}
+.ant-input {
+  color: #666666;
+  font-size: 14px;
+}
+input::-webkit-input-placeholder {
+  /* placeholder颜色  */
+  color: #5a5959;
+  /* placeholder字体大小  */
+  font-size: 10px;
+}
+
+
+/* scroll 样式 */
+::-webkit-scrollbar {
+  width: 0.3rem;
+  height: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 3rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(104, 103, 103, 0.2);
+  background: rgba(200, 199, 199, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: rgba(240, 236, 236, 0.1);
+}
