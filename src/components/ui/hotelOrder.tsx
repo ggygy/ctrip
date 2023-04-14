@@ -1,51 +1,18 @@
 "use client";
-import { DatePicker, Divider, Table } from "antd";
-import clsx from "clsx";
+import { DatePicker, Select } from "antd";
 import Image from "next/image";
 import { useState } from "react";
-import { places } from "./data/hotelData";
-import { InputRender } from "./inputRender";
+import { HotelInput } from "./HotelInput";
+import MultiSelect from "./multiSelect";
 
 export default function HotelOrder() {
-  const [placeShow, setplaceShow] = useState(false);
   const { RangePicker } = DatePicker;
   const [placeValue, setPlaceValue] = useState("天津");
-  const placeRender = () => {
-    return (
-      <div
-        className={clsx(" bg-white block rounded-lg z-50 w-full", {
-          hidden: !placeShow,
-        })}
-        onBlur={() => setplaceShow(false)}
-      >
-        {places.map((place, index) => (
-          <div key={index}>
-            <div className="bg-gray-200 text-left p-2 rounded-md">
-              {place.desc}
-            </div>
-            <ul>
-              {place.data.map((d, index) => (
-                <li
-                  key={index}
-                  className="inline-block w-1/5 hover:bg-blue-300 rounded-md text-center cursor-pointer"
-                  onClick={(e) => {
-                    setPlaceValue(d);
-                    setplaceShow(false);
-                  }}
-                >
-                  {d}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    );
-  };
+
   const placeSearch = () => {};
 
   return (
-    <div className="bg-gradient-to-r from-primary to-white justify-center items-center m-5 w-5/6 h-64 relative  rounded-md ">
+    <div className="bg-gradient-to-r from-primary to-white justify-center items-center h-64 relative  rounded-md border-blue-100 border-2">
       <div className="h-20 relative">
         <Image
           src="/static/hotel_order/homepage-hotel-searchbox-background.png"
@@ -68,16 +35,14 @@ export default function HotelOrder() {
 
       <div className="h-16 w-11/12  bg-white my-3 mx-5 rounded-md">
         <div className="flex flex-wrap after:rounded-md w-full h-full">
-          <div className="flex flex-wrap w-1/2">
-            <div className="rounded-md">
-              <InputRender
+          <div className="flex flex-wrap w-1/2 border-r-[1px] border-gray-100">
+            <div className="rounded-md w-full">
+              <HotelInput
                 desc={"目的地/酒店名称"}
-                setshow={setplaceShow}
                 value={placeValue}
                 setValue={setPlaceValue}
               />
             </div>
-            {placeRender()}
           </div>
           <div className="w-1/2 h-full">
             <RangePicker
@@ -88,39 +53,32 @@ export default function HotelOrder() {
           </div>
         </div>
       </div>
-      <div className="flex h-16 bg-white my-3 mx-5 rounded-md">
-        <div className="flex flex-wrap rounded-md w-full h-full">
+      <div className="flex h-16  my-3 mx-5 rounded-md">
+        <div className="flex flex-wrap rounded-md w-3/4 h-full bg-white">
           <div className="rounded-md w-2/12 h-full">
-            <InputRender
-              desc={"房间及住客"}
-              setshow={setplaceShow}
-              value={placeValue}
-              setValue={setPlaceValue}
-            />
-            <Divider type="vertical" className="h-1/2 " />
+            <MultiSelect desc="房间及住客" defaultValue="1，1" />
+            {/* <Divider type="vertical" className="h-1/2 " /> */}
           </div>
 
           <div className="rounded-md w-3/12 h-full">
-            <InputRender
-              desc={"酒店级别"}
-              setshow={setplaceShow}
-              value={placeValue}
-              setValue={setPlaceValue}
-            />
-            <Divider type="vertical" className="h-1/2 " />
+            <MultiSelect desc="酒店级别" defaultValue="12312312" />
           </div>
           <div className="rounded-md w-3/12 h-full">
-            <InputRender
-              desc={"关键词(选填)"}
-              setshow={setplaceShow}
-              value={placeValue}
-              setValue={setPlaceValue}
-            />
-            <Divider type="vertical" className="h-1/2 " />
+            <label className="absolute text-gray-500 text-sm text-ellipsis mt-1 ml-1">
+              关键词(选填)
+            </label>
+            <Select key={"qw"} />
           </div>
-          <div className="rounded-md w-2/12 h-full">
-            <button onClick={placeSearch}>搜索</button>
-          </div>
+        </div>
+        <div className="rounded-md w-1/4 h-full bg-gradient-to-r from-blue-400 to-blue-500 text-center ml-4">
+          <button
+            onClick={placeSearch}
+            className="flex flex-wrap justify-center "
+          >
+            <span className="text-2xl font-medium h-6px leading-6 text-white mt-5 ml-12">
+              搜索
+            </span>
+          </button>
         </div>
       </div>
     </div>
