@@ -1,6 +1,7 @@
+import { BussinessInfo } from "@/components/bussinessInfo";
 import HotelRecommend from "@/components/hotelRecommend";
 import SeasonHot from "@/components/seasonHot";
-import { BussinessInfo } from "@/components/ui/bussinessInfo";
+
 import HotelOrder from "@/components/ui/hotelOrder";
 import Rotation from "@/components/ui/rotation";
 import type { Metadata } from "next";

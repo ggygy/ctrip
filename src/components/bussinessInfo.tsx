@@ -1,13 +1,21 @@
 "use client";
+// import {
+//   businessData,
+//   safeGuardData,
+//   joinData,
+//   partnerData,
+//   navData,
+// } from "../../../public/data/businessTravel";
+
+import { cn } from "@/lib/utils";
 import {
   businessData,
   safeGuardData,
   joinData,
   partnerData,
   navData,
-} from "../../../public/data/businessTravel";
-import Footers from "./footers";
-import { cn } from "@/lib/utils";
+} from "@/public/data/businessTravel";
+import Footers from "./ui/footers";
 
 const businessTravel = () => {
   return (
