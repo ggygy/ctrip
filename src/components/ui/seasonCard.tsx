@@ -9,8 +9,8 @@ interface SeasonCardProps {
 const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
   const { title, pic } = props;
   return (
-    <div className="border h-[548px] bg">
-      <div className="flex flex-wrap">
+    <div className="rounded-xl h-[548px] bg-gradient-to-bl from-blue-500 to-blue-100 ">
+      <div className="flex flex-wrap bg-blue-50 rounded-xl">
         <Image
           src={pic}
           alt=""
@@ -18,9 +18,11 @@ const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
           height={71}
           className="rounded-lg "
         />
-        <div>{title}</div>
-        <div>
-          <RightCircleOutlined />
+        <div className="flex justify-center items-start p-">
+          <div>{title}</div>
+          <div>
+            <RightCircleOutlined />
+          </div>
         </div>
       </div>
     </div>
