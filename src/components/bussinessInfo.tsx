@@ -6,9 +6,9 @@ import {
   joinData,
   partnerData,
   navData,
-} from "./data/businessTravel";
+} from "./ui/data/businessTravel";
 import { Footer } from "antd/es/layout/layout";
-import Footers from "./footers";
+import Footers from "./ui/footers";
 
 const businessTravel = () => {
   return (

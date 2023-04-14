@@ -1,7 +1,7 @@
 'use client'
 
 import { FunctionComponent } from "react";
-import { BussinessInfo } from '@/components/ui/bussinessInfo'
+import { BussinessInfo } from '@/components/bussinessInfo'
 import { useSelector } from 'react-redux';
 import HotelOrder from '@/components/ui/hotelOrder'
 import Rotation from '@/components/ui/rotation'

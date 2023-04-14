@@ -1,6 +1,6 @@
 // import Image from 'next/image'
 // import Link from 'next/link'
-import { BussinessInfo } from '@/components/ui/bussinessInfo'
+import { BussinessInfo } from '@/components/bussinessInfo'
 import HotelOrder from '@/components/ui/hotelOrder'
 import Rotation from '@/components/ui/rotation'
 import type { Metadata } from 'next'
