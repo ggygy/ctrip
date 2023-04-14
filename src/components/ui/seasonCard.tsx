@@ -9,9 +9,15 @@ interface SeasonCardProps {
 const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
   const { title, pic } = props;
   return (
-    <div className="border bg">
+    <div className="border h-[548px] bg">
       <div className="flex flex-wrap">
-        <Image src={pic} alt="" width={96} height={71} />
+        <Image
+          src={pic}
+          alt=""
+          width={96}
+          height={71}
+          className="rounded-lg "
+        />
         <div>{title}</div>
         <div>
           <RightCircleOutlined />
