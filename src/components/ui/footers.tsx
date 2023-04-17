@@ -5,23 +5,28 @@ import {
   policePosition,
   sumNavData,
   telData,
-} from "./data/businessTravel";
+} from "../../../public/data/businessTravel";
 
 interface Props {}
 
 const Footers: FunctionComponent<Props> = () => {
   const footerNavRender = () => {
     return (
-      <div className="pt-10 pb-13 bg-footer flex-row flex ">
-        {sumNavData.map((i) => (
-          <div className="flex  box-border border-r-[1px] border-solid border-gray-200 ">
+      <div className="pt-10 pb-13 bg-footer flex-row  hidden lg:flex">
+        {sumNavData.map((i, index) => (
+          <div
+            key={index}
+            className="flex  box-border border-r-[1px] border-solid border-gray-200 "
+          >
             <div className="float-left inline-block max-w-[217px] ml-6">
               <div>{i.title}</div>
               <div className="grid grid-cols-2">
-                {i.data.map((d, index) => (
-                  <div className="relative float-left min-w-26 text-left mr-2 mt-3">
+                {i.data.map((d, ind) => (
+                  <div
+                    key={ind}
+                    className="relative float-left min-w-26 text-left mt-3"
+                  >
                     <a
-                      key={index}
                       className="text-gray-666  font-normal  overflow-hidden ml-1 text-xs hover:text-blue-400"
                       href={d.href}
                     >
@@ -34,14 +39,17 @@ const Footers: FunctionComponent<Props> = () => {
           </div>
         ))}
         <div className=" ml-5  mt-10">
-          {telData.map((i) => (
-            <div className="mt-2 flex-row flex">
+          {telData.map((i, index) => (
+            <div key={index} className="mt-2 flex-row flex">
               <div className="font-normal  overflow-hidden ml-1 text-xs text-gray-666">
                 {i.title}
               </div>
               <div className="flex  flex-col">
-                {i.data.map((d) => (
-                  <span className="font-normal  overflow-hidden ml-1 text-xs pl-4 text-gray-666">
+                {i.data.map((d, ind) => (
+                  <span
+                    key={ind}
+                    className="font-normal  overflow-hidden ml-1 text-xs pl-4 text-gray-666"
+                  >
                     {d}
                   </span>
                 ))}
@@ -54,7 +62,6 @@ const Footers: FunctionComponent<Props> = () => {
             <img
               src=" https://pic.c-ctrip.com/platform/online/home/er_ctrip_app.jpg"
               alt=" 携程APP"
-              className=""
             />
           </div>
           <div className="ml-8">扫码下载携程App</div>
@@ -64,9 +71,12 @@ const Footers: FunctionComponent<Props> = () => {
   };
   const copyrightRender = () => {
     return (
-      <div className=" flex-col justify-center items-center mt-8 min-w-[830px] invisible md:flex">
-        {copyrightData.map((i) => (
-          <div className="flex flex-row text-xs leading-6 text-gray-999 font-normal  overflow-hidden">
+      <div className=" flex-col justify-center items-center mt-8  hidden md:flex">
+        {copyrightData.map((i, index) => (
+          <div
+            key={index}
+            className="flex flex-row text-xs leading-6 text-gray-999 font-normal  overflow-hidden"
+          >
             {i.data.map((d, index) => {
               if (d.href !== "/") {
                 return (
@@ -96,10 +106,9 @@ const Footers: FunctionComponent<Props> = () => {
       <div className="mt-4 hidden md:block">
         <div className=" flex flex-row justify-center ">
           {policePosition.map((i, index) => (
-            <div className="">
+            <div key={index}>
               <a
                 href={i.href}
-                key={index}
                 className="mx-1  border-solid border-gray-400 border-[1px] block bg-no-repeat"
                 style={{
                   backgroundImage: `url(${i.href})`,
@@ -109,9 +118,7 @@ const Footers: FunctionComponent<Props> = () => {
                   float: "right",
                   backgroundSize: i.backgroundSize,
                 }}
-              >
-                {/* {i.alt} */}
-              </a>
+              ></a>
             </div>
           ))}
         </div>
