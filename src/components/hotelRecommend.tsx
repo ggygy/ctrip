@@ -5,20 +5,23 @@ import HotelCard from "./ui/hotelCard";
 import HotelMenu from "./ui/hotelMenu";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { cn } from "@/lib/utils";
-interface HotelRecommendProps {}
+import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
 
-const HotelRecommend: FunctionComponent<HotelRecommendProps> = () => {
+interface HotelRecommendProps {
+  data: hotelRecommend[];
+}
+
+const HotelRecommend: FunctionComponent<HotelRecommendProps> = (props) => {
+  const { data } = props;
   const [selectedSite, setselectedSite] = useState("上海");
   const [moveLeft, setmoveLeft] = useState(false);
   const [moveRight, setmoveRight] = useState(false);
   const [translateX, settranslateX] = useState(0);
   useEffect(() => {
-    // console.log("translateX", translateX);
     const hotelCa = document.getElementById("hotelCa");
     const wc = hotelCa?.offsetWidth!;
     const hotelRe = document.getElementById("hotelRe");
     const wr = hotelRe?.offsetWidth!;
-    // console.log("w", w);
     if (!translateX) {
       setmoveLeft(false);
       setmoveRight(true);
@@ -30,16 +33,6 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = () => {
       setmoveRight(true);
     }
   }, [translateX]);
-  const data = {
-    picPath: "/public/static/hotel_pic/hotel_1.jpg",
-    hotelName: "上海酒店xxxxxxxxxxxxxxxxxx",
-    stars: 4,
-    grade: 4.7,
-    rate: "超棒",
-    commentsNum: 1000,
-    price: "560",
-    url: "https://hotels.ctrip.com/hotels/77694994.html#ctm_ref=hp_htl_pt_pro_01",
-  };
   return (
     <div className="w-full">
       <HotelMenu
@@ -56,9 +49,8 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = () => {
               "flex cursor-pointer absolute top-24 left-0 justify-center rounded-lg items-center h-10 w-10 z-10 -translate-x-2  bg-[#ffffff] opacity-60",
               { hidden: !moveLeft }
             )}
-            onClick={(e) => {
+            onClick={() => {
               const dom = document.getElementById("hotelRe");
-              // console.log("dom", dom);
               const w = dom?.offsetWidth!;
               settranslateX(translateX + w);
             }}
@@ -72,7 +64,6 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = () => {
             )}
             onClick={() => {
               const dom = document.getElementById("hotelRe");
-              // console.log("dom", dom);
               const w = dom?.offsetWidth!;
               settranslateX(translateX - w);
             }}
@@ -89,24 +80,9 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = () => {
           }}
           id="hotelCa"
         >
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-
-          <HotelCard data={data} />
-          <HotelCard data={data} />
-
-          <HotelCard data={data} />
-          <HotelCard data={data} />
+          {data.map((item, index) => (
+            <HotelCard key={index} data={item} />
+          ))}
         </div>
       </div>
     </div>

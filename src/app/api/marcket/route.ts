@@ -6,9 +6,9 @@ export const runtime = 'nodejs';
 async function getMarketData() {
   const MarketData = await db.marketcity.findMany({
     take: 4, // 选取4个随机酒店
-    include: {
-      marketdata: true,
-    },
+    // include: {
+    //   marketdata: true,
+    // },
   })
   return MarketData
 }

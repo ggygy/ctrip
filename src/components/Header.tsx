@@ -67,7 +67,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
           <Order />
         </div>
 
-        <div className="w-3 h-0 lg:h-5 overflow-hidden my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>
+        <div className="w-3 h-0 lg:h-5 my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>
 
         <div className="flex flex-row w-0 invisible lg:w-auto lg:visible">
           <Service className="my-auto ml-4 cursor-pointer dark:text-slate-50" />

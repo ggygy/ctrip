@@ -154,3 +154,22 @@ input::-webkit-input-placeholder {
   transform: translateY(-70%);
   transform: translateX(-69%);
 }
+
+.ant-select-multiple .ant-select-selection-item{
+  background: white !important;
+  border:none;
+
+}
+
+.ant-select-selection-item-remove{
+display: none !important;
+}
+.ant-select-selector{
+  overflow: hidden !important;
+  width: 100%;
+}
+.ant-select-selection-overflow{
+  display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+}

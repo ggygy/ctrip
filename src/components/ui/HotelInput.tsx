@@ -23,7 +23,7 @@ export const HotelInput = (props: HotelInputType) => {
                 <li
                   key={index}
                   className="inline-block hover:bg-blue-100 rounded-md text-center cursor-pointer w-1/5 text-clip"
-                  onClick={(e) => {
+                  onClick={() => {
                     setValue(d);
                     setopen(false);
                   }}

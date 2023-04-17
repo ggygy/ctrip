@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { FunctionComponent } from "react";
 import {
   copyrightData,
@@ -12,16 +13,16 @@ interface Props {}
 const Footers: FunctionComponent<Props> = () => {
   const footerNavRender = () => {
     return (
-      <div className="pt-10 pb-13 bg-footer flex-row  hidden lg:flex">
-        {sumNavData.map((item) => (
+      <div className="pt-10 pb-13 bg-footer flex-row  hidden lg:flex dark:bg-slate-700">
+        {sumNavData.map((i, index) => (
           <div
-            key={item.title}
-            className="flex  box-border border-r-[1px] border-solid border-gray-200 "
+            key={index}
+            className="flex box-border border-r-[1px] border-solid border-gray-200 "
           >
             <div className="float-left inline-block max-w-[217px] ml-6">
-              <div>{item.title}</div>
+              <div>{i.title}</div>
               <div className="grid grid-cols-2">
-                {item.data.map((d, ind) => (
+                {i.data.map((d, ind) => (
                   <div
                     key={ind}
                     className="relative float-left min-w-26 text-left mt-3"
@@ -59,12 +60,14 @@ const Footers: FunctionComponent<Props> = () => {
         </div>
         <div className="lg:flex  hidden flex-col">
           <div className="  ml-10 pt-7">
-            <img
-              src=" https://pic.c-ctrip.com/platform/online/home/er_ctrip_app.jpg"
+            <Image
+              src="/er_ctrip_app.jpg"
               alt=" 携程APP"
+              width={112}
+              height={112}
             />
           </div>
-          <div className="ml-8">扫码下载携程App</div>
+          <div className="ml-8 dark:text-white">扫码下载携程App</div>
         </div>
       </div>
     );
@@ -72,16 +75,16 @@ const Footers: FunctionComponent<Props> = () => {
   const copyrightRender = () => {
     return (
       <div className=" flex-col justify-center items-center mt-8  hidden md:flex">
-        {copyrightData.map((i) => (
+        {copyrightData.map((i, index) => (
           <div
-            key={i.index}
-            className="flex flex-row text-xs leading-6 text-gray-999 font-normal  overflow-hidden"
+            key={index}
+            className="flex flex-row text-xs leading-6 text-gray-999 font-normal  overflow-hidden "
           >
             {i.data.map((d, index) => {
               if (d.href !== "/") {
                 return (
-                  <div key={d.title}>
-                    {index !== 0 && <div className=" ml-1 ">|</div>}
+                  <div key={d.title} className=" flex flex-nowrap my-1">
+                    {index !== 0 && <div className=" mx-1 ">|</div>}
                     <a href={d.href} className=" hover:text-blue-400 ">
                       {d.title}
                     </a>
@@ -89,8 +92,8 @@ const Footers: FunctionComponent<Props> = () => {
                 );
               } else {
                 return (
-                  <div key={d.title}>
-                    {index !== 0 && <div className="ml-1 pt-[1px]">|</div>}
+                  <div key={d.title} className="flex flex-nowrap my-1">
+                    {index !== 0 && <div className="ml-x pt-[1px]">|</div>}
                     <div className=" ml-1 pt-[1px]">{d.title}</div>
                   </div>
                 );

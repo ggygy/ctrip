@@ -1,66 +1,63 @@
 import { Select, Space } from "antd";
 import { FunctionComponent } from "react";
-import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
+
 
 interface MultiSelectProps {
   desc: string;
   defaultValue: string;
 }
+const options = ["二星（钻）及以下", "三星（钻）", "四星（钻）", "五星（钻）"];
 
 const MultiSelect: FunctionComponent<MultiSelectProps> = (props) => {
   const { desc } = props;
   const { Option } = Select;
+
   const handleChange = (value: string[]) => {
     console.log(`selected ${value}`);
   };
   return (
-    <>
-      <label className="absolute text-gray-500 text-sm text-ellipsis mt-1 ml-1">
+    <div className="overflow-hidden">
+      <label className="text-gray-500 text-sm text-ellipsis mt-2 ml-2">
         {desc}
       </label>
-
-      <Select
-        mode="multiple"
-        style={{ width: "100%" }}
-        // placeholder="select one country"
-        defaultValue={["china"]}
-        onChange={handleChange}
-        optionLabelProp="label"
-        suffixIcon={<CaretUpOutlined />}
-      >
-        <Option value="china" label="China">
-          <Space>
-            <span role="img" aria-label="China">
-              房间
-            </span>
-          </Space>
-        </Option>
-        <Option value="usa" label="USA">
-          <Space>
-            <span role="img" aria-label="USA">
-              成人
-            </span>
-          </Space>
-        </Option>
-        <Option value="japan" label="Japan">
-          <Space>
-            <span role="img" aria-label="Japan">
-              🇯🇵
-            </span>
-            Japan (日本)
-          </Space>
-        </Option>
-        <Option value="korea" label="Korea">
-          <Space>
-            <span role="img" aria-label="Korea">
-              🇰🇷
-            </span>
-            Korea (韩国)
-          </Space>
-        </Option>
-      </Select>
-    </>
+      <div className="overflow-hidden">
+        <Select
+          mode="multiple"
+          style={{ width: "100%" }}
+          bordered={false}
+          placeholder="不限"
+          onChange={handleChange}
+          optionLabelProp="value"
+          className="flex flex-nowrap overflow-hidden h-10"
+        >
+          {options.map((i) => (
+            <Option value={i + "、"} label={i} key={i}>
+              <Space>{i}</Space>
+            </Option>
+          ))}
+        </Select>
+      </div>
+    </div>
   );
 };
 
 export default MultiSelect;
+
+// import React from 'react';
+// import { Select, Tag } from 'antd';
+// import type { CustomTagProps } from 'rc-select/lib/BaseSelect';
+
+// const options = [{ value: 'gold' }, { value: 'lime' }, { value: 'green' }, { value: 'cyan' }];
+
+// const App: React.FC = () => (
+//   <Select
+//     mode="multiple"
+//     showArrow
+//     tagRender={tagRender}
+//     defaultValue={['gold', 'cyan']}
+//     style={{ width: '100%' }}
+//     options={options}
+//   />
+// );
+
+// export default App;
