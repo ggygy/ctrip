@@ -18,6 +18,7 @@ export default async function Home() {
   const hotelRecommends = await getHotelRecommends("上海");
   const groupData = await getSeasonHot("上海", "group");
   const flightData = await getSeasonHot("上海", "flight");
+
   return (
     <div className="w-full  dark:bg-slate-900">
       <div className="flex  content-between">
