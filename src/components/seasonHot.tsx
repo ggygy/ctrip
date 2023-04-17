@@ -4,17 +4,11 @@ import { Select } from "antd";
 import { FunctionComponent, useState } from "react";
 import SeasonCard from "./ui/seasonCard";
 
-interface SeasonHotProps {}
+interface SeasonHotProps { }
 
 const SeasonHot: FunctionComponent<SeasonHotProps> = () => {
   const [othersite, setothersite] = useState("广州");
   const [open, setopen] = useState<boolean>(false);
-  const config = [
-    {
-      title: "当季热卖 跟团游",
-      pic: "/group.png",
-    },
-  ];
 
   const moreRender = () => {
     return (

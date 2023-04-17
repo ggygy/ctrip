@@ -13,15 +13,15 @@ const Footers: FunctionComponent<Props> = () => {
   const footerNavRender = () => {
     return (
       <div className="pt-10 pb-13 bg-footer flex-row  hidden lg:flex">
-        {sumNavData.map((i, index) => (
+        {sumNavData.map((item) => (
           <div
-            key={index}
+            key={item.title}
             className="flex  box-border border-r-[1px] border-solid border-gray-200 "
           >
             <div className="float-left inline-block max-w-[217px] ml-6">
-              <div>{i.title}</div>
+              <div>{item.title}</div>
               <div className="grid grid-cols-2">
-                {i.data.map((d, ind) => (
+                {item.data.map((d, ind) => (
                   <div
                     key={ind}
                     className="relative float-left min-w-26 text-left mt-3"
@@ -72,27 +72,27 @@ const Footers: FunctionComponent<Props> = () => {
   const copyrightRender = () => {
     return (
       <div className=" flex-col justify-center items-center mt-8  hidden md:flex">
-        {copyrightData.map((i, index) => (
+        {copyrightData.map((i) => (
           <div
-            key={index}
+            key={i.index}
             className="flex flex-row text-xs leading-6 text-gray-999 font-normal  overflow-hidden"
           >
             {i.data.map((d, index) => {
               if (d.href !== "/") {
                 return (
-                  <>
+                  <div key={d.title}>
                     {index !== 0 && <div className=" ml-1 ">|</div>}
                     <a href={d.href} className=" hover:text-blue-400 ">
                       {d.title}
                     </a>
-                  </>
+                  </div>
                 );
               } else {
                 return (
-                  <>
+                  <div key={d.title}>
                     {index !== 0 && <div className="ml-1 pt-[1px]">|</div>}
                     <div className=" ml-1 pt-[1px]">{d.title}</div>
-                  </>
+                  </div>
                 );
               }
             })}

@@ -44,14 +44,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "contents.ctrip.com",
-        port: "",
-        pathname: "**",
+        hostname: "**",
+        // port: "",
+        // pathname: "**",
       },
     ],
   },
-
-  // https://contents.ctrip.com/activitysetupapp/mkt/index/pcchaosan
 };
 
 module.exports = nextConfig;

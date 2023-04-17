@@ -64,6 +64,23 @@ model verificationtoken {
   @@unique([identifier, token], map: "VerificationToken_identifier_token_key")
 }
 
+model marketcity {
+  cityName   String @id @db.VarChar(50)
+  cityImgUrl String @db.VarChar(255)
+  cityTemLb  Int    @db.SmallInt
+  cityTemUb  Int    @db.SmallInt
+}
+
+model marketdata {
+  cityName           String @db.VarChar(50)
+  hotelImgUrl        String @db.VarChar(255)
+  hotelSkipUrl       String @db.VarChar(255)
+  hotelName          String @id @db.VarChar(255)
+  hotelStartingPrice Int
+
+  @@index([cityName], map: "cityName")
+}
+
 enum navmenu_type {
   route
   menu_dir

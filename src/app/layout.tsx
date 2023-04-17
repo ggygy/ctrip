@@ -1,3 +1,11 @@
+/*
+ * @Version: 1.0
+ * @Autor: zwj
+ * @Date: 2023-04-12 21:21:33
+ * @LastEditors: zwj
+ * @LastEditTime: 2023-04-15 22:55:09
+ * @Description: 
+ */
 import Menu from '@/components/Menu'
 import Header from '@/components/Header'
 import '@/styles/globals.css'
@@ -30,12 +38,13 @@ export default async function RootLayout({
               <Header />
 
               <main>{children}</main>
+
+              {/* Allow more height for mobile menu on mobile */}
+              <div className='h-5 md:hidden' />
             </div>
           </div>
         </Providers>
 
-        {/* Allow more height for mobile menu on mobile */}
-        {/* <div className='h-5 md:hidden' /> */}
       </body>
     </html>
   )

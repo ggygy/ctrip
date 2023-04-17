@@ -146,3 +146,11 @@ input::-webkit-input-placeholder {
 .ant-card .ant-card-body{
   padding: 10px;
 }
+
+#rightContent .slick-dots-bottom {
+  position: absolute;
+  top: 13%;
+  left: 1%;
+  transform: translateY(-70%);
+  transform: translateX(-69%);
+}

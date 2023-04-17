@@ -7,9 +7,10 @@ import 'server-only';
 export async function getMenus() {
 
   const res = await fetch(
-    `${getBaseUrl()}/api/menus`,
+    `${getBaseUrl()}/api/menus/`,
     { cache: 'no-store' }
   );
+  
 
   if (!res.ok) {
     // Render the closest `error.js` Error Boundary
