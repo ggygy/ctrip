@@ -74,3 +74,16 @@ enum navmenu_status {
   enable  @map("1")
   disable @map("0")
 }
+
+model hotelRecommend {
+  id          BigInt @id @default(autoincrement()) @db.UnsignedBigInt()
+  from        String
+  picPath     String
+  hotelName   String
+  star        Int
+  grade       String
+  rate        String
+  commentsNum Int
+  price       String
+  url         String
+}

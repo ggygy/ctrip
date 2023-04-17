@@ -1,20 +1,31 @@
 "use client";
 import { data } from "@/public/data/city";
 import { Select } from "antd";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import SeasonCard from "./ui/seasonCard";
+import Image from "next/image";
+import { getSeasonHot } from "@/app/api/seasonHot/fetchSeasonHot";
+import { seasonHot } from "@/app/api/seasonHot/seasonHot";
+interface SeasonHotProps {
+  groupData: seasonHot[];
+  flightData: seasonHot[];
+}
 
-interface SeasonHotProps {}
-
-const SeasonHot: FunctionComponent<SeasonHotProps> = () => {
+const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
+  const { groupData, flightData } = props;
   const [othersite, setothersite] = useState("广州");
   const [open, setopen] = useState<boolean>(false);
-  const config = [
-    {
-      title: "当季热卖 跟团游",
-      pic: "/group.png",
-    },
-  ];
+  const seasonGroup = useRef<seasonHot[]>();
+  const seasonFlight = useRef<seasonHot[]>();
+  seasonGroup.current = groupData;
+  seasonFlight.current = flightData;
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     seasonGroup.current = await getSeasonHot(othersite, "group");
+  //     seasonFlight.current = await getSeasonHot(othersite, "flight");
+  //   };
+  //   fetchData();
+  // }, [othersite]);
 
   const moreRender = () => {
     return (
@@ -37,7 +48,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = () => {
   return (
     <div>
       <div className="w-full my-6 flex flex-row h-10">
-        <div className="mr-4 text-xl font-medium ">
+        <div className="mr-4 text-xl font-medium dark:white">
           当季
           <span className="text-orange-300">热推</span>
         </div>
@@ -58,9 +69,26 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = () => {
           dropdownRender={moreRender}
         />
       </div>
-      <div>
-        <div className="w-1/2">
-          <SeasonCard title="当季热卖 跟团游" pic="/group.png" />
+      <div className="flex lg:flex-nowrap flex-wrap">
+        <div className="lg:w-1/2  mr-3 bg-blue-50 rounded-t-2xl relative mt-4 lg:mt-0">
+          <div className="absolute left-24 lg:left-0">
+            <Image src="/groupBorder.png" alt="" width={320} height={587} />
+          </div>
+          <SeasonCard
+            title="当季热卖 跟团游"
+            pic="/group.png"
+            data={seasonGroup.current}
+          />
+        </div>
+        <div className="lg:w-1/2 mr-3 bg-purple-50 rounded-t-2xl relative mt-4 lg:mt-0">
+          <div className="absolute left-24 lg:left-0">
+            <Image src="/flightBorder.png" alt="" width={320} height={587} />
+          </div>
+          <SeasonCard
+            title="周末畅游 特价旅票"
+            pic="/flight.png"
+            data={seasonFlight.current}
+          />
         </div>
       </div>
     </div>

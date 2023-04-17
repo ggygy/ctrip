@@ -3,21 +3,21 @@ export const businessData = [
     title: "一站式企业差旅服务",
     bg: "bg-blue-50",
     desc: "海量差旅产品,全流程服务,智能管控,助力企业成本节省高达30%!",
-    url: "https://webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/business_block_service.png",
+    url: "/static/business/business_block_service.png",
     link: "",
   },
   {
     title: "公对公结算",
     bg: "bg-orange-50",
     desc: "15分钟极速开通公司账户、30+20天超长账期,自助对账，统一开票、配送！",
-    url: "https://webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/business_block_pay.png",
+    url: "/static/business/business_block_pay.png",
     link: "https://ct.ctrip.com/biztravel/introduce/settlementlanding?ctm_ref=sme002",
   },
   {
     title: "企业方案量身定制",
     bg: "bg-green-50",
     desc: "强大的产品技术&amp;服务解决方案 ,支持企业规模在500人以上中大型企业定制",
-    url: "https://webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/business_block_order.png",
+    url: "/static/business/business_block_order.png",
     link: "https://ct.ctrip.com/official/product/customizedSolutions?ctm_ref=sme003",
   },
 ];
@@ -29,43 +29,43 @@ export const safeGuardData = [
       {
         alt: "酒店 · 放心住",
         desc: ["200多个国家121万家酒店", "确认订单后不涨价"],
-        url: "https://webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/hotelSafely.png",
+        url: "/static/safeGuard/hotelSafely.png",
       },
       {
         alt: "机票放心飞",
         desc: ["近200万条全球航线选择", "一站式售后服务体验"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/flightSafely.png",
+        url: "/static/safeGuard/flightSafely.png",
       },
       {
         alt: "火车票 · 放心行",
         desc: ["价格透明，退票改签不收取", " 额外费用，保障客人出行"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/trainSafely.png",
+        url: "/static/safeGuard/trainSafely.png",
       },
       {
         alt: "旅游 · 放心玩",
         desc: ["开放数万条旅游产品选择", " 7*24小时应急救援体系"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/travelSafely.png",
+        url: "/static/safeGuard/travelSafely.png",
       },
 
       {
         alt: "金融 · 放心付",
         desc: ["多元化结款产品", "合规保障，专项服务"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/financeSafely.png",
+        url: "/static/safeGuard/financeSafely.png",
       },
       {
         alt: "美食 · 放心吃",
         desc: ["全城美食套餐性价比高", "品质优选，价格保障"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/foodSafely.png",
+        url: "/static/safeGuard/foodSafely.png",
       },
       {
         alt: "会员 · 放心用",
         desc: ["多种产品多种特权随心使用", "预订越多，积分奖励越多"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/vipSafely.png",
+        url: "/static/safeGuard/vipSafely.png",
       },
       {
         alt: "直播 · 放心逛",
         desc: [" 旅游专项直播随时逛", "大BOSS定期开播"],
-        url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.58/default/image/liveSafely.png",
+        url: "/static/safeGuard/liveSafely.png",
       },
     ],
   },
@@ -74,17 +74,17 @@ export const safeGuardData = [
 export const joinData = [
   {
     alt: "酒店加盟",
-    url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.41/default/image/hotelJoin.jpeg",
+    url: "/static/safeGuard/hotelJoin.jpeg",
     link: "https://ebooking.ctrip.com/ebkovsassembly/HotelApply?type=1&amp;channel=1&amp;lang=0",
   },
   {
     alt: "代理商加盟",
-    url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.41/default/image/hotelSupplierJoin.png",
+    url: "/static/safeGuard/hotelSupplierJoin.png",
     link: "https://hotels.ctrip.com/commerce.html",
   },
   {
     alt: "eBooking酒店管理后台",
-    url: "//webresource.c-ctrip.com/ares2/nfes/pc-home/1.0.41/default/image/hotelEbooking.png",
+    url: "/static/safeGuard/hotelEbooking.png",
     link: "https://ebooking.ctrip.com/ebkovsassembly/HotelApply?type=1&amp;channel=1&amp;lang=0",
   },
 ];

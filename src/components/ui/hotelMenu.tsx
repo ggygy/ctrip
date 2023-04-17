@@ -33,12 +33,12 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
   };
 
   return (
-    <div className="w-full my-6 flex flex-row h-10">
-      <div className="mr-4 text-xl font-medium ">
+    <div className="w-full my-6 flex lg:flex-row h-10 flex-col">
+      <div className="mr-4 text-xl  font-medium dark:text-white">
         酒店
         <span className="text-orange-300">推荐</span>
       </div>
-      <div className="flex  justify-end ml-auto ">
+      <div className="flex  justify-end lg:ml-auto ">
         <Radio.Group
           defaultValue="a"
           value={selectedSite}
@@ -52,7 +52,7 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
           <Radio.Button value={othersite}>{othersite}</Radio.Button>
         </Radio.Group>
 
-        <div className="w-15 hover:bg-blue-100 mx-3">
+        <div className="w-15 h-8 hover:bg-blue-100 ">
           <Select
             open={open}
             value={"更多"}

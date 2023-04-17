@@ -37,6 +37,8 @@ module.exports = {
           "url('./static/hotel_order/homepage-hotel-searchbox-background.png')",
         partner:
           "url('//pic.c-ctrip.com/platform/online/home/pic_partner.png')",
+        group: "/groupBorder.png",
+        flight: "/flightBorder.png",
       },
       gradientColorStops: (theme) => ({
         ...theme("colors"),
@@ -53,6 +55,7 @@ module.exports = {
       gridTemplateColumns: {
         // Simple 16 column grid
         graud: "1fr 2fr",
+        travelCard: "1fr 2fr 1fr",
       },
       backgroundColor: (theme) => ({
         ...theme("colors"),

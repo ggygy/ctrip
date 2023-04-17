@@ -1,9 +1,10 @@
 "use client";
-import { DatePicker, Select } from "antd";
+import { DatePicker, Input, Select } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 import { HotelInput } from "./HotelInput";
-import MultiSelect from "./multiSelect";
+import GuestSelect from "./GuestSelect";
+import MultiSelect from "./MultiSelect";
 
 export default function HotelOrder() {
   const { RangePicker } = DatePicker;
@@ -55,19 +56,24 @@ export default function HotelOrder() {
       </div>
       <div className="flex h-16  my-3 mx-5 rounded-md">
         <div className="flex flex-wrap rounded-md w-3/4 h-full bg-white">
-          <div className="rounded-md w-2/12 h-full">
-            <MultiSelect desc="房间及住客" defaultValue="1，1" />
-            {/* <Divider type="vertical" className="h-1/2 " /> */}
+          <div className="rounded-md w-1/3 h-full border-r-[1px]">
+            <GuestSelect />
           </div>
 
-          <div className="rounded-md w-3/12 h-full">
+          <div className="rounded-md w-1/3 h-full">
             <MultiSelect desc="酒店级别" defaultValue="12312312" />
           </div>
-          <div className="rounded-md w-3/12 h-full">
-            <label className="absolute text-gray-500 text-sm text-ellipsis mt-1 ml-1">
+          <div className="rounded-md w-1/3 h-full flex flex-col">
+            <label className=" text-gray-500 text-sm text-ellipsis mt-1 ml-1">
               关键词(选填)
             </label>
-            <Select key={"qw"} />
+            <div>
+              <Input
+                placeholder="机场火车站酒店名称"
+                className="h-8"
+                bordered={false}
+              ></Input>
+            </div>
           </div>
         </div>
         <div className="rounded-md w-1/4 h-full bg-gradient-to-r from-blue-400 to-blue-500 text-center ml-4">
