@@ -6,9 +6,7 @@ import { seasonHot } from "./seasonHot";
 export async function getSeasonHot(city: string, key: string) {
   const res = await fetch(
     `${getBaseUrl()}/api/seasonHot?city=${city}&key=${key}`,
-    {
-      cache: "no-store",
-    }
+    { next: { revalidate: 60 } }
   );
 
   if (!res.ok) {

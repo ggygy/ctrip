@@ -11,7 +11,8 @@ const Rotation: React.FC = () => {
     // <div className="rounded-lg">
     <Carousel
       afterChange={onChange}
-      autoplay={false}
+      autoplaySpeed={5000}
+      autoplay={true}
       className="my-5 rounded-lg"
     >
       {rorationData.map((i, index) => {

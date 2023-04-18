@@ -13,15 +13,21 @@ import {
 import { Button } from "antd";
 import MenuItem from "@/ui/MenuItem";
 import type { navmenu } from "../app/api/menus/navmenu";
+import { useRouter } from "next/navigation";
 
 interface MyMenuProps {
   menus: navmenu[];
 }
 
 const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
+  const router = useRouter();
   const { isOpen } = useSelector((store: any) => store.menuState);
   const dispatch = useDispatch();
+
+  // 使用 collapsed || isHover 决定menu是否展开，当collapsed为true时不管有没有hover事件默认展开
   const [collapsed, setCollapsed] = useState(true);
+  const [isHover, setIsHover] = useState(false);
+
   const [selectedKey, setSelectedKey] = useState("酒店");
 
   const toggleCollapsed = () => {
@@ -30,8 +36,13 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
 
   const toggleSelectedKey = (menuItem: navmenu) => {
     setTimeout(() => {
+      if (menuItem.title === '酒店') {
+        
+        router.push(menuItem.path)
+      }
+      
       setSelectedKey(menuItem.title);
-    }, 100);
+    }, 50);
   };
 
   return isOpen ? (
@@ -39,29 +50,31 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
       className={cn(
         "bg-white dark:bg-slate-900 dark:border-slate-900 overflow-y-auto z-10 flex flex-col w-full h-full fixed lg:w-36 lg:border",
         {
-          "lg:w-16": !collapsed,
+          "lg:w-16": !(collapsed || isHover),
         }
       )}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <div
         className={cn(
           "bg-white dark:bg-slate-900 dark:border-slate-900 fixed top-0 w-full h-24 lg:h-14 flex pl-4 lg:w-36 lg:border",
           {
-            "pl-2 lg:w-16": !collapsed,
+            "pl-2 lg:w-16": !(collapsed || isHover),
           }
         )}
       >
         <Button
           type="text"
           className={cn("block my-auto invisible lg:visible dark:bg-slate-700")}
-          icon={collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+          icon={collapsed || isHover ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
           onClick={toggleCollapsed}
           size={"large"}
         />
 
-        {collapsed ? (
+        {collapsed || isHover ? (
           <Image
-            className="pointer-events-none mt-5 ml-5 block h-10 lg:w-0 lg:invisible"
+            className="pointer-events-none mt-5 ml-2 block h-10 lg:w-0 lg:invisible"
             src={"/logo.png"}
             width={160}
             height={25}
@@ -72,7 +85,7 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
         <Button
           type="text"
           className={cn(
-            "block my-auto absolute right-16 bottom-9 dark:bg-slate-700 lg:invisible"
+            "block my-auto mr-1 absolute right-16 bottom-9 dark:bg-slate-700 lg:invisible"
           )}
           icon={<CloseOutlined />}
           onClick={() => dispatch(setIsopen())}
@@ -94,7 +107,7 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
               <MenuItem
                 Icon={item.icon}
                 MenuItemInfo={item}
-                iScollapsed={collapsed}
+                iScollapsed={collapsed || isHover}
                 isShow={selectedKey === item.title}
                 onClick={() => toggleSelectedKey(item)}
               ></MenuItem>

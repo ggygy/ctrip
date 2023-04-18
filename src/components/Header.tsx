@@ -48,16 +48,16 @@ const Header: FunctionComponent<HeaderProps> = () => {
 
       <Search
         className={cn(
-          "w-64 mt-5 mx-auto justify-center lg:w-72 lg:my-auto lg:mx-0"
+          "w-64 mt-5 mx-auto justify-center lg:w-72 lg:my-auto lg:justify-start lg:ml-0 lg:mr-0"
         )}
         placeholder="搜索旅行地/酒店/旅游/景点门票/交通"
         onSearch={onSearch}
         enterButton
       />
 
-      <div className="flex flex-row select-none justify-center mt-3 lg:mt-0 lg:justify-start lg:w-1/2 lg:ml-48">
+      <div className="flex flex-row justify-center select-none mt-3 ml-2 lg:mt-0 lg:w-5/12 lg:ml-36">
         <div className="flex flex-row">
-          <ThemeToggle className="dark:bg-slate-700 dark:border-slate-700 rounded-sm my-auto  align-middle" />
+          <ThemeToggle className="dark:bg-slate-700 dark:border-slate-700 rounded-sm my-auto align-middle" />
 
           <div className="bg-slate-100 w-20 my-auto ml-4 pl-2 h-7 leading-7 rounded-2xl hover:cursor-pointer hover:text-sky-700">
             <UserOutlined />
@@ -67,7 +67,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
           <Order />
         </div>
 
-        <div className="w-3 h-0 lg:h-5 my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>
+        <div className="w-0 h-0 overflow-hidden lg:w-3 lg:h-5 my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>
 
         <div className="flex flex-row w-0 invisible lg:w-auto lg:visible">
           <Service className="my-auto ml-4 cursor-pointer dark:text-slate-50" />

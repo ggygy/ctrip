@@ -1,14 +1,14 @@
 import { getBaseUrl } from '@/lib/getBaseUrl';
 import { notFound } from 'next/navigation';
-import type { navmenu } from './navmenu';
+import type { marketData } from './market';
 
-import 'server-only';
+// import 'server-only';
 
-export async function getMenus() {
+export async function getMarketData() {
 
   const res = await fetch(
-    `${getBaseUrl()}/api/menus/`,
-    { next: { revalidate: 60 } }
+    `${getBaseUrl()}/api/market/`,
+    { cache: "no-store", }
   );
   
 
@@ -18,13 +18,13 @@ export async function getMenus() {
   }
   
 
-  const menus = (await res.json()) as navmenu[];
+  const market = (await res.json()) as marketData[];
 
 
-  if (menus.length === 0) {
+  if (market.length === 0) {
     // Render the closest `not-found.js` Error Boundary
     notFound();
   }
 
-  return menus;
+  return market;
 }

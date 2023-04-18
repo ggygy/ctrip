@@ -6,7 +6,7 @@ import { seasonHot } from "./seasonHot";
 const href =
   "https://vacations.ctrip.com/travel/detail/p22686644/?city=13&ctm_ref=vactang_scene_40000019#ctm_ref=hp_group_pt_pro_01";
 export async function getseasonHots(city: string, key: string) {
-  console.log("city", city);
+  // console.log("city", city);
   const data: seasonHot[] = [];
   for (let i = 0; i < 5; i++) {
     data.push({

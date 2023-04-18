@@ -1,21 +1,39 @@
 // export const runtime = 'edge';
 import { db } from '@/lib/db'
-import type {marketData} from './market'
+import type { marketData } from './market'
+
 export const runtime = 'nodejs';
 
 async function getMarketData() {
-  const MarketData = await db.marketcity.findMany({
+  const CitytData = await db.marketcity.findMany({
     take: 4, // 选取4个随机酒店
-    // include: {
-    //   marketdata: true,
-    // },
+    skip: Math.floor(Math.random() * 8),
   })
-  return MarketData
+
+  let marketData: marketData[] = []
+  for (let item of CitytData) {
+    const HotelData = await db.marketdata.findMany({
+      where: {
+        cityName: item.cityName
+      }
+    })
+
+    marketData.push({
+      ...item,
+      cityTem: {
+        Lb: item.cityTemLb,
+        Ub: item.cityTemUb
+      },
+      hotels: HotelData as any
+    })
+  }
+
+  return marketData
 }
 
 
 export async function GET(request: Request) {
-  
+
   const { searchParams } = new URL(request.url);
 
   const isLogin = searchParams.get('isLogin');
@@ -31,7 +49,7 @@ export async function GET(request: Request) {
   }
 
   const menus = await getMarketData()
-  
+
   return new Response(JSON.stringify(menus), {
     status: 200,
     headers: {

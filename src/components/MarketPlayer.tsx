@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Carousel } from 'antd';
 import { cn } from "@/lib/utils";
+import type { marketData } from "@/app/api/market/market";
+import { useRouter } from "next/navigation";
 
 interface MarketContainerProps
   extends React.HtmlHTMLAttributes<HTMLDivElement> {
@@ -15,15 +17,11 @@ interface MarketContainerProps
     Ub: number
   }
   hotels: {
-    imgUrl: string
-    skipUrl: string
-    name: string
-    startingPrice: number
+    hotelImgUrl: string
+    hotelSkipUrl: string
+    hotelName: string
+    hotelStartingPrice: number
   }[]
-}
-
-interface MarketPlayerProps {
-
 }
 
 export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityName, cityImgUrl, cityTem, hotels, className }) => {
@@ -39,21 +37,21 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
         {
           hotels.map((hotel) => (
             <Link
-              href={hotel.skipUrl}
+              href={hotel.hotelSkipUrl}
               target="_blank"
               className="w-40 h-12 bg-white bg-opacity-40 rounded-md overflow-hidden mt-2 flex flex-row"
-              key={hotel.name}>
+              key={hotel.hotelName}>
               <Image
                 className="rounded-md overflow-hidden"
-                style={{margin: '3px 3px'}}
-                src={hotel.imgUrl}
+                style={{ margin: '3px 3px' }}
+                src={hotel.hotelImgUrl}
                 alt=""
                 width={40}
                 height={40}
               />
               <div className="flex flex-col mx-1 my-auto">
-                <span className="w-24 text-slate-50 text-xs truncate">{hotel.name}</span>
-                <span className="text-slate-50 text-xs">￥<span className="text-sm font-bold">{hotel.startingPrice}</span>起</span>
+                <span className="w-24 text-slate-50 text-xs truncate">{hotel.hotelName}</span>
+                <span className="text-slate-50 text-xs">￥<span className="text-sm font-bold">{hotel.hotelStartingPrice}</span>起</span>
               </div>
             </Link>
           ))
@@ -63,69 +61,37 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
   );
 }
 
-const MarketPlayer: FunctionComponent<MarketPlayerProps> = () => {
-  const cityInfo = {
-    cityName: '武汉',
-    cityImgUrl: 'https://dimg04.c-ctrip.com/images/0zg6b120009h126he8173.jpg',
-    cityTem: {
-      Lb: 17,
-      Ub: 25
-    },
-    hotels: [
-      {
-        imgUrl: 'https://dimg04.c-ctrip.com/images/0206e120008ilkmtg49CA_W_1080_808_R5_D.jpg',
-        skipUrl: 'https://hotels.ctrip.com/hotels/28237078.html?checkin=2022-05-22&checkout=2022-05-23&ctm_ref=hp_mkt_pt_pro_01',
-        name: '武汉泛海费尔蒙酒店',
-        startingPrice: 1000,
-      },
-      {
-        imgUrl: 'https://dimg04.c-ctrip.com/images/0206e120008ilkmtg49CA_W_1080_808_R5_D.jpg',
-        skipUrl: 'https://hotels.ctrip.com/hotels/28237078.html?checkin=2022-05-22&checkout=2022-05-23&ctm_ref=hp_mkt_pt_pro_01',
-        name: '武汉泛海费尔蒙酒店',
-        startingPrice: 1000,
-      },
-      {
-        imgUrl: 'https://dimg04.c-ctrip.com/images/0206e120008ilkmtg49CA_W_1080_808_R5_D.jpg',
-        skipUrl: 'https://hotels.ctrip.com/hotels/28237078.html?checkin=2022-05-22&checkout=2022-05-23&ctm_ref=hp_mkt_pt_pro_01',
-        name: '武汉泛海费尔蒙酒店',
-        startingPrice: 1000,
-      },
-    ]
-  }
+interface MarketPlayerProps {
+  marketData: marketData[]
+}
+
+const MarketPlayer: FunctionComponent<MarketPlayerProps> = ({marketData}) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      router.refresh();
+    }, 20*1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [marketData]) 
+
+  
   return (
-    <Carousel autoplay>
-      <div className="w-full">
-        <MarketContainer
-          cityName={cityInfo.cityName}
-          cityImgUrl={cityInfo.cityImgUrl}
-          cityTem={cityInfo.cityTem}
-          hotels={cityInfo.hotels}
-        />
-      </div>
-      <div className="w-full">
-        <MarketContainer
-          cityName={cityInfo.cityName}
-          cityImgUrl={cityInfo.cityImgUrl}
-          cityTem={cityInfo.cityTem}
-          hotels={cityInfo.hotels}
-        />
-      </div>
-      <div className="w-full">
-        <MarketContainer
-          cityName={cityInfo.cityName}
-          cityImgUrl={cityInfo.cityImgUrl}
-          cityTem={cityInfo.cityTem}
-          hotels={cityInfo.hotels}
-        />
-      </div>
-      <div className="w-full">
-        <MarketContainer
-          cityName={cityInfo.cityName}
-          cityImgUrl={cityInfo.cityImgUrl}
-          cityTem={cityInfo.cityTem}
-          hotels={cityInfo.hotels}
-        />
-      </div>
+    <Carousel autoplay autoplaySpeed={5000}>
+      {
+        marketData.map((item: marketData) => (
+          <div key={item.cityName} className="w-full">
+            <MarketContainer
+              cityName={item.cityName}
+              cityImgUrl={item.cityImgUrl}
+              cityTem={item.cityTem}
+              hotels={item.hotels}
+            />
+          </div>
+        ))
+      }
     </Carousel>
   );
 }

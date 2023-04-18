@@ -6,9 +6,9 @@ export type marketData = {
     Ub: number
   }
   hotels: {
-    imgUrl: string
-    skipUrl: string
-    name: string
-    startingPrice: number
+    hotelImgUrl: string
+    hotelSkipUrl: string
+    hotelName: string
+    hotelStartingPrice: number
   }[]
 }
