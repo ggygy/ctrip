@@ -17,7 +17,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 	({ className, children, Icon, MenuItemInfo, iScollapsed, isShow, ...props }, ref) => {
 		const content = (
 			<div>
-				{MenuItemInfo.children?.map((subItem: navmenu) => {
+				{MenuItemInfo && MenuItemInfo.children?.map((subItem: navmenu) => {
 					return (
 						<Link
 							key={subItem.title + subItem.id}
@@ -58,7 +58,7 @@ const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 
 				{(isShow && iScollapsed && MenuItemInfo.children) ?
 					<div className="flex flex-col dark:bg-slate-900 mt-1">
-						{MenuItemInfo.children!.map(item => {
+						{MenuItemInfo && MenuItemInfo.children!.map(item => {
 							return <Link href={item.path} className={cn('text-sm my-1 ml-8 w-32 dark:text-slate-50 hover:text-sky-600 lg:w-16 lg:text-xs lg:break-words lg:ml-9')} key={item.title + item.id}>{item.title}</Link>
 						})}
 					</div>

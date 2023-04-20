@@ -97,7 +97,7 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
           "flex flex-col z-20 h-4/5 overflow-scroll mt-24 lg:mt-14 lg:h-full"
         )}
       >
-        {menus.map((item: navmenu) => {
+        {menus && menus.map((item: navmenu) => {
           return (
             <div key={item.title + item.id}>
               {item.title === "企业商旅" ? (

@@ -29,7 +29,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
 
   const moreRender = () => {
     return (
-      <div className="overflow-scroll cursor-pointer flex flex-wrap max-h-[300px]">
+      <div className="overflow-scroll cursor-pointer flex flex-wrap max-h-[300px] dark:bg-slate-700">
         {data.map((i, index) => (
           <div
             key={index}
@@ -48,11 +48,12 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
   return (
     <div>
       <div className="w-full my-6 flex flex-row h-10">
-        <div className="mr-4 text-xl font-medium dark:white">
+        <div className="mr-4 text-xl font-medium dark:text-slate-50">
           当季
           <span className="text-orange-300">热推</span>
         </div>
         <Select
+          className="dark:bg-slate-700"
           open={open}
           value={othersite}
           onClick={() => setopen(true)}

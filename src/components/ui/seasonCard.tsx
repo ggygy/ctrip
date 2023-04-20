@@ -13,8 +13,8 @@ const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
   const { title, pic, data } = props;
 
   return (
-    <div className="rounded-t-2xl ">
-      <div className="flex flex-wrap  rounded-t-xl">
+    <div className="rounded-t-2xl dark:bg-slate-700">
+      <div className="flex flex-wrap rounded-t-xl">
         <Image
           src={pic}
           alt=""
@@ -24,7 +24,7 @@ const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
         />
 
         <div className="flex justify-center items-center p-1">
-          <div className="text-base font-semibold overflow-hidden">{title}</div>
+          <div className="text-base font-semibold overflow-hidden dark:text-slate-50">{title}</div>
           <div className="ml-2">
             <RightCircleOutlined
               style={{
@@ -37,7 +37,7 @@ const SeasonCard: FunctionComponent<SeasonCardProps> = (props) => {
         </div>
       </div>
 
-      <div className="w-[97%] grid grid-rows-5 gap-[2px]  bg-white overflow-hidden rounded-b-lg mb-2 mx-1">
+      <div className="w-[97%] grid grid-rows-5 gap-[2px] bg-white dark:bg-slate-700 overflow-hidden rounded-b-lg mb-2 mx-1">
         {data &&
           data.map((item, index) => (
             <TravelCard data={item} key={index} index={index + 1} />

@@ -16,6 +16,7 @@ const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
     <a href={data.url}>
       <Card
         hoverable
+        className="dark:bg-slate-600"
         style={{ width: 210, overflow: "hidden", margin: "0 4px" }}
         onMouseEnter={() => sethover(true)}
         onMouseLeave={() => sethover(false)}
@@ -34,7 +35,7 @@ const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
         }
       >
         <div className="leading-3 w-full">
-          <div className="m-2 text-ellipsis whitespace-nowrap overflow-hidden w-full font-semibold text-xl ">
+          <div className="m-2 text-ellipsis whitespace-nowrap overflow-hidden w-full font-semibold text-xl dark:text-slate-200">
             {data.hotelName}
           </div>
           <Image
@@ -44,14 +45,14 @@ const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
             height={12}
             className="ml-2"
           ></Image>
-          <div className="flex flex-wrap m-2 dark:bg-slate-900">
+          <div className="flex flex-wrap m-2">
             <div className="bg-blue-400 text-white inline-block rounded w-12 text-center text-base leading-6 ">
               <span>{data.grade}</span>
               <span className="ml-[1px] text-blue-100 text-xs leading-4">
                 /5
               </span>
             </div>
-            <div className="m-2">{data.rate}</div>
+            <div className="m-2 dark:text-slate-200">{data.rate}</div>
           </div>
 
           <div className="flex m-2 dark:bg-slate-900">

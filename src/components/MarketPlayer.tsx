@@ -33,9 +33,9 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
         <span className="text-slate-50 text-sm">{cityName}酒店口碑榜</span>
         <span className="text-slate-50 text-sm">{cityTem.Lb}°C~{cityTem.Ub}°C</span>
       </div>
-      <div className={cn("w-52 h-64 mt-3 ml-24 flex flex-col")}>
+      <div className={cn("w-52 h-64 mt-[14px] ml-24 flex flex-col")}>
         {
-          hotels.map((hotel) => (
+          hotels && hotels.map((hotel) => (
             <Link
               href={hotel.hotelSkipUrl}
               target="_blank"
@@ -81,7 +81,7 @@ const MarketPlayer: FunctionComponent<MarketPlayerProps> = ({marketData}) => {
   return (
     <Carousel autoplay autoplaySpeed={5000}>
       {
-        marketData.map((item: marketData) => (
+        marketData && marketData.map((item: marketData) => (
           <div key={item.cityName} className="w-full">
             <MarketContainer
               cityName={item.cityName}
