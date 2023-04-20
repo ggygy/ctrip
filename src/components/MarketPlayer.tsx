@@ -43,7 +43,7 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
               key={hotel.hotelName}>
               <Image
                 className="rounded-md overflow-hidden"
-                style={{ margin: '3px 3px' }}
+                style={{ margin: '3px 3px', width: "auto", height: "auto"}}
                 src={hotel.hotelImgUrl}
                 alt=""
                 width={40}

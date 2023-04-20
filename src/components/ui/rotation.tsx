@@ -4,7 +4,7 @@ import { Carousel } from "antd";
 import { rorationData } from "../../../public/data/rotation";
 const Rotation: React.FC = () => {
   const onChange = (currentSlide: number) => {
-    console.log(currentSlide);
+    
   };
 
   return (

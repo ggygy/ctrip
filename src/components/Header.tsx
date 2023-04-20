@@ -31,6 +31,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
       <div className="my-auto flex flex-row justify-center lg:justify-start">
         <Image
           className="pointer-events-none block lg:my-auto lg:h-8"
+          style={{width: "auto", height: "auto"}}
           src={"/logo.png"}
           width={160}
           height={25}

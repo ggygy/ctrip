@@ -1,11 +1,11 @@
 "use client";
 import { data } from "@/public/data/city";
 import { Select } from "antd";
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import SeasonCard from "./ui/seasonCard";
 import Image from "next/image";
-import { getSeasonHot } from "@/app/api/seasonHot/fetchSeasonHot";
 import { seasonHot } from "@/app/api/seasonHot/seasonHot";
+import axios from "axios";
 interface SeasonHotProps {
   groupData: seasonHot[];
   flightData: seasonHot[];
@@ -13,19 +13,29 @@ interface SeasonHotProps {
 
 const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
   const { groupData, flightData } = props;
-  const [othersite, setothersite] = useState("广州");
+  const [othersite, setothersite] = useState("上海");
+  const [seasonGroup, setSeasonGroup] = useState<seasonHot[]>(groupData);
+  const [seasonFlight, setSeasonFlight] = useState<seasonHot[]>(flightData);
   const [open, setopen] = useState<boolean>(false);
-  const seasonGroup = useRef<seasonHot[]>();
-  const seasonFlight = useRef<seasonHot[]>();
-  seasonGroup.current = groupData;
-  seasonFlight.current = flightData;
-  useEffect(() => {
-    const fetchData = async () => {
-      seasonGroup.current = await getSeasonHot(othersite, "group");
-      seasonFlight.current = await getSeasonHot(othersite, "flight");
-    };
-    fetchData();
-  }, [othersite]);
+
+  const getSeasonHotData = (currentCity: string) => {
+    axios({
+      method: 'get',
+      url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=group/`,
+      responseType: 'json'
+    })
+      .then(function (response) {
+        setSeasonGroup(response.data)
+      });
+    axios({
+      method: 'get',
+      url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=flight/`,
+      responseType: 'json'
+    })
+      .then(function (response) {
+        setSeasonFlight(response.data)
+      });
+  }
 
   const moreRender = () => {
     return (
@@ -34,8 +44,9 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           <div
             key={index}
             onClick={() => {
-              setopen(false);
               setothersite(i);
+              getSeasonHotData(i)
+              setopen(false);
             }}
             className="hover:bg-blue-100 w-20 leading-8 justify-center flex"
           >
@@ -60,7 +71,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           onBlur={() => {
             setTimeout(() => {
               setopen(false);
-            }, 100);
+            }, 300);
           }}
           placement="bottomLeft"
           dropdownMatchSelectWidth={false}
@@ -78,7 +89,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           <SeasonCard
             title="当季热卖 跟团游"
             pic="/group.png"
-            data={seasonGroup.current}
+            data={seasonGroup}
           />
         </div>
         <div className="lg:w-1/2 mr-3 bg-purple-50 rounded-t-2xl relative mt-4 lg:mt-0">
@@ -88,7 +99,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           <SeasonCard
             title="周末畅游 特价旅票"
             pic="/flight.png"
-            data={seasonFlight.current}
+            data={seasonFlight}
           />
         </div>
       </div>

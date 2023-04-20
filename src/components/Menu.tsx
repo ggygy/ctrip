@@ -35,14 +35,9 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
   };
 
   const toggleSelectedKey = (menuItem: navmenu) => {
-    setTimeout(() => {
-      if (menuItem.title === '酒店') {
-        
-        router.push(menuItem.path)
-      }
-      
+    setTimeout(() => {    
       setSelectedKey(menuItem.title);
-    }, 50);
+    }, 100);
   };
 
   return isOpen ? (
