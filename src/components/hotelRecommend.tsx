@@ -6,6 +6,8 @@ import HotelMenu from "./ui/hotelMenu";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { cn } from "@/lib/utils";
 import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
+import axios from "axios";
+import { getBaseUrl } from "@/lib/getBaseUrl";
 
 interface HotelRecommendProps {
   data: hotelRecommend[];
@@ -13,10 +15,23 @@ interface HotelRecommendProps {
 
 const HotelRecommend: FunctionComponent<HotelRecommendProps> = (props) => {
   const { data } = props;
+  const [hotelData, setHotelData] = useState<hotelRecommend[]>(data);
   const [selectedSite, setselectedSite] = useState("上海");
   const [moveLeft, setmoveLeft] = useState(false);
   const [moveRight, setmoveRight] = useState(false);
   const [translateX, settranslateX] = useState(0);
+
+  const getHotelData = (currentSite: string) => {
+    axios({
+      method: "get",
+      url: `${getBaseUrl()}/api/hotelRecommend?city=${currentSite}`,
+      responseType: "json",
+    }).then(function (response) {
+      console.log("selectedSite ", selectedSite);
+      setHotelData(response.data);
+    });
+  };
+
   useEffect(() => {
     const hotelCa = document.getElementById("hotelCa");
     const wc = hotelCa?.offsetWidth!;
@@ -38,6 +53,7 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = (props) => {
       <HotelMenu
         selectedSite={selectedSite}
         setselectedSite={setselectedSite}
+        getHotelData={getHotelData}
       />
       <div
         className="w-full flex flex-nowrap overflow-hidden relative"
@@ -80,7 +96,7 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = (props) => {
           }}
           id="hotelCa"
         >
-          {data.map((item, index) => (
+          {hotelData.map((item, index) => (
             <HotelCard key={index} data={item} />
           ))}
         </div>

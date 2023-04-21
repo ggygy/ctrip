@@ -69,6 +69,8 @@ model marketcity {
   cityImgUrl String @db.VarChar(255)
   cityTemLb  Int    @db.SmallInt
   cityTemUb  Int    @db.SmallInt
+
+  @@index([cityName, cityImgUrl, cityTemLb, cityTemUb], map: "cityName")
 }
 
 model marketdata {
@@ -79,6 +81,19 @@ model marketdata {
   hotelStartingPrice Int
 
   @@index([cityName], map: "cityName")
+}
+
+model hotelrecommend {
+  id          BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  from        String
+  picPath     String
+  hotelName   String
+  star        Int
+  grade       String
+  rate        String
+  commentsNum Int
+  price       String
+  url         String
 }
 
 enum navmenu_type {
