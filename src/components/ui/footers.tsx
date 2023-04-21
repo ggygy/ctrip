@@ -18,7 +18,7 @@ const Footers: FunctionComponent<Props> = () => {
             key={index}
             className="flex box-border border-r-[1px] border-solid border-gray-200 "
           >
-            <div className="float-left inline-block max-w-[217px] ml-6">
+            <div className="float-left inline-block max-w-[217px] ml-6 dark:text-gray-200">
               <div>{i.title}</div>
               <div className="grid grid-cols-2">
                 {i.data.map((d, ind) => (
@@ -27,7 +27,7 @@ const Footers: FunctionComponent<Props> = () => {
                     className="relative float-left min-w-26 text-left mt-3"
                   >
                     <a
-                      className="text-gray-666  font-normal  overflow-hidden ml-1 text-xs hover:text-blue-400"
+                      className="text-gray-666 dark:text-gray-400 font-normal  overflow-hidden ml-1 text-xs hover:text-blue-400"
                       href={d.href}
                     >
                       {d.alt}
@@ -41,14 +41,14 @@ const Footers: FunctionComponent<Props> = () => {
         <div className=" ml-5  mt-10">
           {telData.map((i, index) => (
             <div key={index} className="mt-2 flex-row flex">
-              <div className="font-normal  overflow-hidden ml-1 text-xs text-gray-666">
+              <div className="font-normal  overflow-hidden ml-1 text-xs text-gray-666 dark:text-gray-400">
                 {i.title}
               </div>
               <div className="flex  flex-col">
                 {i.data.map((d, ind) => (
                   <span
                     key={ind}
-                    className="font-normal  overflow-hidden ml-1 text-xs pl-4 text-gray-666"
+                    className="font-normal  overflow-hidden ml-1 text-xs pl-4 text-gray-666 dark:text-gray-400"
                   >
                     {d}
                   </span>

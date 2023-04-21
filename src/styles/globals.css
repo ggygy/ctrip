@@ -170,7 +170,7 @@ input::-webkit-input-placeholder {
 }
 
 .ant-select-selection-item-remove{
-display: none !important;
+  display: none !important;
 }
 .ant-select-selector{
   overflow: hidden !important;
@@ -178,6 +178,6 @@ display: none !important;
 }
 .ant-select-selection-overflow{
   display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow: hidden !important;
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
 }

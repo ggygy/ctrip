@@ -37,6 +37,8 @@ module.exports = {
           "url('./static/hotel_order/homepage-hotel-searchbox-background.png')",
         partner:
           "url('//pic.c-ctrip.com/platform/online/home/pic_partner.png')",
+        internationalHome:
+          "url('https://dimg02.c-ctrip.com/images/10031e000001fq0hcB1E3.jpg_.webp')",
       },
       gradientColorStops: (theme) => ({
         ...theme("colors"),

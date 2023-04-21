@@ -1,7 +1,6 @@
 import { Select, Space } from "antd";
 import { FunctionComponent } from "react";
 
-
 interface MultiSelectProps {
   desc: string;
   defaultValue: string;
@@ -16,11 +15,11 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = (props) => {
     console.log(`selected ${value}`);
   };
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden w-full">
       <label className="text-gray-500 text-sm text-ellipsis mt-2 ml-2">
         {desc}
       </label>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden w-full">
         <Select
           mode="multiple"
           style={{ width: "100%" }}
@@ -28,7 +27,7 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = (props) => {
           placeholder="不限"
           onChange={handleChange}
           optionLabelProp="value"
-          className="flex flex-nowrap overflow-hidden h-10"
+          className="flex flex-nowrap overflow-hidden h-10 w-full"
         >
           {options.map((i) => (
             <Option value={i + "、"} label={i} key={i}>

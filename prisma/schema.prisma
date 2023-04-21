@@ -29,6 +29,8 @@ model marketcity {
   cityImgUrl String @db.VarChar(255)
   cityTemLb  Int    @db.SmallInt
   cityTemUb  Int    @db.SmallInt
+
+  @@index([cityName, cityImgUrl, cityTemLb, cityTemUb], map: "cityName")
 }
 
 model marketdata {

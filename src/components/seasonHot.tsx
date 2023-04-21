@@ -20,22 +20,21 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
 
   const getSeasonHotData = (currentCity: string) => {
     axios({
-      method: 'get',
+      method: "get",
       url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=group/`,
-      responseType: 'json'
-    })
-      .then(function (response) {
-        setSeasonGroup(response.data)
-      });
+      responseType: "json",
+    }).then(function (response) {
+      // console.log("response.data", response.data);
+      setSeasonGroup(response.data);
+    });
     axios({
-      method: 'get',
+      method: "get",
       url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=flight/`,
-      responseType: 'json'
-    })
-      .then(function (response) {
-        setSeasonFlight(response.data)
-      });
-  }
+      responseType: "json",
+    }).then(function (response) {
+      setSeasonFlight(response.data);
+    });
+  };
 
   const moreRender = () => {
     return (
@@ -45,7 +44,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
             key={index}
             onClick={() => {
               setothersite(i);
-              getSeasonHotData(i)
+              getSeasonHotData(i);
               setopen(false);
             }}
             className="hover:bg-blue-100 w-20 leading-8 justify-center flex"
@@ -64,7 +63,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           <span className="text-orange-300">热推</span>
         </div>
         <Select
-          className="dark:bg-slate-700"
+          className="dark:bg-gray-600"
           open={open}
           value={othersite}
           onClick={() => setopen(true)}

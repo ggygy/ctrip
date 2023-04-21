@@ -5,10 +5,11 @@ import { data } from "@/public/data/city";
 interface HotelMenuProps {
   selectedSite: string;
   setselectedSite: (s: string) => void;
+  getHotelData: (v: string) => void;
 }
 
 const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
-  const { selectedSite, setselectedSite } = props;
+  const { selectedSite, setselectedSite, getHotelData } = props;
   const [othersite, setothersite] = useState("广州");
   const [open, setopen] = useState<boolean>(false);
 
@@ -21,6 +22,7 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
             onClick={() => {
               setopen(false);
               setothersite(i);
+              getHotelData(i);
               setselectedSite(i);
             }}
             className="hover:bg-blue-100 w-20 leading-8 justify-center flex"
@@ -34,15 +36,19 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
 
   return (
     <div className="w-full my-6 flex lg:flex-row h-10 flex-col">
-      <div className="mr-4 text-xl  font-medium dark:text-white">
+      <div className="mr-4 text-xl  font-medium dark:bg-slate-700">
         酒店
         <span className="text-orange-300">推荐</span>
       </div>
-      <div className="flex  justify-end lg:ml-auto ">
+      <div className="flex  justify-end lg:ml-auto bg-white ml-1">
         <Radio.Group
           defaultValue="a"
           value={selectedSite}
-          onChange={(e) => setselectedSite(e.target.value)}
+          onChange={(e) => {
+            console.log("e", e.target.value);
+            setselectedSite(e.target.value);
+            getHotelData(e.target.value);
+          }}
         >
           <Radio.Button value="上海" defaultChecked>
             上海

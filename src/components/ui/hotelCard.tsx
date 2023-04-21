@@ -6,16 +6,17 @@ import { FunctionComponent, useState } from "react";
 
 interface HotelCardProps {
   data: hotelRecommend;
+  isHover?: boolean;
 }
 
 const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
-  const { data } = props;
+  const { data, isHover = true } = props;
   const [hover, sethover] = useState<boolean>(false);
 
   return (
     <a href={data.url}>
       <Card
-        hoverable
+        hoverable={isHover}
         className="dark:bg-slate-600"
         style={{ width: 210, overflow: "hidden", margin: "0 4px" }}
         onMouseEnter={() => sethover(true)}
@@ -26,7 +27,7 @@ const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
             src={data.picPath}
             width={210}
             height={160}
-            className={cn({ "scale-110": hover })}
+            className={cn({ "scale-110": hover && isHover })}
             style={{
               // transform: "Scale(1.2)",
               transition: "all 1s",
@@ -52,11 +53,13 @@ const HotelCard: FunctionComponent<HotelCardProps> = (props) => {
                 /5
               </span>
             </div>
-            <div className="m-2 dark:text-slate-200">{data.rate}</div>
+            <div className="m-2 dark:text-slate-200 dark:bg-gray-700">
+              {data.rate}
+            </div>
           </div>
 
-          <div className="flex m-2 dark:bg-slate-900">
-            <span className="text-sm text-gray-500 mt-1">
+          <div className="flex m-2 dark:bg-slate-700">
+            <span className="text-sm text-gray-500 mt-1 dark:text-white">
               {data.commentsNum}条点评
             </span>
             <span className="flex justify-end m-auto text-xl text-blue-500">

@@ -12,7 +12,7 @@ const picPath = [
 ];
 export async function getHotelRecommends(city: string) {
   const data: hotelRecommend[] = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     data.push({
       picPath: picPath[Random.integer(0, 3)],
       hotelName: city + Random.ctitle(2, 5) + "酒店",
