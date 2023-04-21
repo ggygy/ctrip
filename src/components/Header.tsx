@@ -5,6 +5,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Service from "@/ui/Service";
 import MobileDownload from "@/ui/MobileDownload";
+import MyInfoDropdown from "./ui/MyInfoDropdown";
 import Order from "@/ui/Order";
 import { FunctionComponent } from "react";
 import { setIsopen } from "@/lib/store/menuStateSlice";
@@ -17,21 +18,32 @@ import {
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { cn } from "@/lib/utils";
+import { signIn } from "next-auth/react";
+import { Session } from "next-auth";
 
-interface HeaderProps {}
+interface HeaderProps {
+  session: Session | null
+}
 
 const { Search } = Input;
 
-const Header: FunctionComponent<HeaderProps> = () => {
+const Header: FunctionComponent<HeaderProps> = ({ session }) => {
   const dispatch = useDispatch();
   const onSearch = (value: string) => console.log(value);
+
+  const signInWithEmail = async () => {
+    try {
+      await signIn('email')
+    } catch (error) {
+    }
+  }
 
   return (
     <div className={cn("flex flex-col lg:flex-row lg:h-12")}>
       <div className="my-auto flex flex-row justify-center lg:justify-start">
         <Image
           className="pointer-events-none block lg:my-auto lg:h-8"
-          style={{width: "auto", height: "auto"}}
+          style={{ width: "auto", height: "auto" }}
           src={"/logo.png"}
           width={160}
           height={25}
@@ -56,14 +68,20 @@ const Header: FunctionComponent<HeaderProps> = () => {
         enterButton
       />
 
-      <div className="flex flex-row justify-center select-none mt-3 ml-2 lg:mt-0 lg:w-5/12 lg:ml-36">
+      <div className="flex flex-row justify-center select-none mt-3 ml-2 lg:mt-0 lg:w-5/12 lg:ml-28">
         <div className="flex flex-row">
           <ThemeToggle className="dark:bg-slate-700 dark:border-slate-700 rounded-sm my-auto align-middle" />
 
-          <div className="bg-slate-100 w-20 my-auto ml-4 pl-2 h-7 leading-7 rounded-2xl hover:cursor-pointer hover:text-sky-700">
-            <UserOutlined />
-            <span className="text-sm ml-1">请登录</span>
-          </div>
+          {
+            !session ?
+              <div
+                className="bg-slate-100 w-20 my-auto ml-4 pl-2 h-7 leading-7 rounded-2xl hover:cursor-pointer hover:text-sky-700"
+                onClick={signInWithEmail}>
+                <UserOutlined />
+                <span className="text-sm ml-1">请登录</span>
+              </div> :
+              <MyInfoDropdown className="bg-slate-100 w-24 my-auto ml-4 pl-2 h-7 leading-7 rounded-2xl truncate hover:cursor-pointer hover:text-sky-700"/>
+          }
 
           <Order />
         </div>
@@ -71,8 +89,8 @@ const Header: FunctionComponent<HeaderProps> = () => {
         <div className="w-0 h-0 overflow-hidden lg:w-3 lg:h-5 my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>
 
         <div className="flex flex-row w-0 invisible lg:w-auto lg:visible">
-          <Service className="my-auto ml-4 cursor-pointer dark:text-slate-50" />
-          <MobileDownload className="my-auto ml-4 mr-3 cursor-pointer dark:text-slate-50" />
+          <Service className="my-auto ml-3 cursor-pointer dark:text-slate-50" />
+          <MobileDownload className="my-auto ml-3 mr-2 cursor-pointer dark:text-slate-50" />
         </div>
 
         <div className="w-3 h-0 lg:h-5 my-auto border-r-2 border-gray-200 dark:border-gray-500"></div>

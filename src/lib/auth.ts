@@ -29,6 +29,11 @@ export const authOptions: NextAuthOptions = {
       from: getEmailCredentials().from,
     }),
   ],
+  theme: {
+    colorScheme: "light",
+  },
+  // 在使用 JSON Web Tokens 时将访问令牌或用户 ID 等数据传递给浏览器，
+  // 可以在调用回调时将数据保存在令牌中，然后在回调中将数据传递给浏览jwt器session。
   callbacks: {
     async session({ token, session }) {
       if (token) {
@@ -60,7 +65,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
     redirect() {
-      return '/dashboard'
+      return '/'
     },
   },
 }
