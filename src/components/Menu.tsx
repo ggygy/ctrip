@@ -13,14 +13,12 @@ import {
 import { Button } from "antd";
 import MenuItem from "@/ui/MenuItem";
 import type { navmenu } from "../app/api/menus/navmenu";
-import { useRouter } from "next/navigation";
 
 interface MyMenuProps {
   menus: navmenu[];
 }
 
 const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
-  const router = useRouter();
   const { isOpen } = useSelector((store: any) => store.menuState);
   const dispatch = useDispatch();
 

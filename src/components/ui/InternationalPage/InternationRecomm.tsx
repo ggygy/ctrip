@@ -2,7 +2,7 @@ import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
 import { getBaseUrl } from "@/lib/getBaseUrl";
 import axios from "axios";
 import { FunctionComponent, useState } from "react";
-import HotelCard from "./hotelCard";
+import HotelCard from "../hotelRecommend/hotelCard";
 
 interface InternationalRecommProps {
   data: hotelRecommend[];

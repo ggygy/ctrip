@@ -4,7 +4,9 @@ import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { data } from "@/public/data/city";
 interface HotelMenuProps {
   selectedSite: string;
+  // eslint-disable-next-line no-unused-vars
   setselectedSite: (s: string) => void;
+  // eslint-disable-next-line no-unused-vars
   getHotelData: (v: string) => void;
 }
 
@@ -20,9 +22,9 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
           <div
             key={index}
             onClick={() => {
+              getHotelData(i);
               setopen(false);
               setothersite(i);
-              getHotelData(i);
               setselectedSite(i);
             }}
             className="hover:bg-blue-100 w-20 leading-8 justify-center flex"
@@ -36,16 +38,15 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
 
   return (
     <div className="w-full my-6 flex lg:flex-row h-10 flex-col">
-      <div className="mr-4 text-xl  font-medium dark:bg-slate-700">
+      <div className="mr-4 text-xl  font-medium dark:bg-slate-900 dark:text-slate-50">
         酒店
         <span className="text-orange-300">推荐</span>
       </div>
-      <div className="flex  justify-end lg:ml-auto bg-white ml-1">
+      <div className="flex justify-end lg:ml-auto bg-white ml-1 dark:bg-slate-900">
         <Radio.Group
           defaultValue="a"
           value={selectedSite}
           onChange={(e) => {
-            console.log("e", e.target.value);
             setselectedSite(e.target.value);
             getHotelData(e.target.value);
           }}
@@ -58,7 +59,7 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
           <Radio.Button value={othersite}>{othersite}</Radio.Button>
         </Radio.Group>
 
-        <div className="w-15 h-8 hover:bg-blue-100 ">
+        <div className="w-15 h-8 overflow-hidden rounded-md hover:bg-blue-100 dark:bg-gray-200">
           <Select
             open={open}
             value={"更多"}

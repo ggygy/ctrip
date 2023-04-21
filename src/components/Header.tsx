@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import ThemeToggle from "@/components/ui/ThemeToggle";
-import Service from "@/ui/Service";
-import MobileDownload from "@/ui/MobileDownload";
-import MyInfoDropdown from "./ui/MyInfoDropdown";
-import Order from "@/ui/Order";
+import ThemeToggle from "@/components/ui/header/ThemeToggle";
+import Service from "@/components/ui/header/Service";
+import MobileDownload from "@/components/ui/header/MobileDownload";
+import MyInfoDropdown from "./ui/header/MyInfoDropdown";
+import Order from "@/components/ui/header/Order";
 import { FunctionComponent } from "react";
 import { setIsopen } from "@/lib/store/menuStateSlice";
 import { Input, Button, Tooltip } from "antd";

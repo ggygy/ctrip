@@ -1,8 +1,8 @@
 import { FunctionComponent, useState } from "react";
-import { HotelInput } from "./HotelInput";
+import { HotelInput } from "@/ui/HotelInput";
 import { Card, DatePicker, Input } from "antd";
-import GuestSelect from "./GuestSelect";
-import GroupSelect from "./GroupSelect";
+import GuestSelect from "@/ui/GuestSelect";
+import GroupSelect from "@/ui/GroupSelect";
 import { SearchOutlined } from "@ant-design/icons";
 interface InternationalSelectProps {}
 

@@ -2,7 +2,7 @@
 import { data } from "@/public/data/city";
 import { Select } from "antd";
 import { FunctionComponent, useState } from "react";
-import SeasonCard from "./ui/seasonCard";
+import SeasonCard from "./ui/seasonHot/seasonCard";
 import Image from "next/image";
 import { seasonHot } from "@/app/api/seasonHot/seasonHot";
 import axios from "axios";

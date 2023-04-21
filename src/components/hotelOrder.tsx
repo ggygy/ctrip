@@ -2,9 +2,9 @@
 import { DatePicker, Input } from "antd";
 import Image from "next/image";
 import { useState } from "react";
-import { HotelInput } from "./HotelInput";
-import GuestSelect from "./GuestSelect";
-import MultiSelect from "./multiSelect";
+import { HotelInput } from "./ui/HotelInput";
+import GuestSelect from "./ui/GuestSelect";
+import MultiSelect from "./ui/multiSelect";
 import { useSelector } from "react-redux";
 import { cn } from "@/lib/utils";
 

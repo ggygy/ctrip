@@ -1,8 +1,8 @@
 "use client";
 
 import { FunctionComponent, useEffect, useState } from "react";
-import HotelCard from "./ui/hotelCard";
-import HotelMenu from "./ui/hotelMenu";
+import HotelCard from "./ui/hotelRecommend/hotelCard";
+import HotelMenu from "./ui/hotelRecommend/hotelMenu";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { cn } from "@/lib/utils";
 import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
@@ -27,7 +27,6 @@ const HotelRecommend: FunctionComponent<HotelRecommendProps> = (props) => {
       url: `${getBaseUrl()}/api/hotelRecommend?city=${currentSite}`,
       responseType: "json",
     }).then(function (response) {
-      console.log("selectedSite ", selectedSite);
       setHotelData(response.data);
     });
   };

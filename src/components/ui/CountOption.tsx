@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { MinusCircleOutlined, PlusCircleOutlined } from "@ant-design/icons";
 interface CountOptionProps {
+  // eslint-disable-next-line no-unused-vars
   setCount: (n: number) => void;
   count: number;
   title: string;

@@ -1,9 +1,9 @@
 "use client";
 import { FunctionComponent } from "react";
-import InternationalSelect from "./ui/InternationSelect";
+import InternationalSelect from "./ui/InternationalPage/InternationSelect";
 import Footers from "./ui/footers";
-import ServerUpdate from "./ui/ServerUpdate";
-import InternationalRecomm from "./ui/InternationRecomm";
+import ServerUpdate from "./ui/InternationalPage/ServerUpdate";
+import InternationalRecomm from "./ui/InternationalPage/InternationRecomm";
 import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
 
 interface InternationalProps {

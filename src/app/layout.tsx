@@ -1,11 +1,3 @@
-/*
- * @Version: 1.0
- * @Autor: zwj
- * @Date: 2023-04-12 21:21:33
- * @LastEditors: zwj
- * @LastEditTime: 2023-04-15 22:55:09
- * @Description: 
- */
 import Menu from '@/components/Menu'
 import Header from '@/components/Header'
 import '@/styles/globals.css'
