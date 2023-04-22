@@ -86,7 +86,6 @@ const items: MenuProps['items'] = [
   {
     label: (
       <OrederItem 
-        onClick={signUserOut}
         iconName={'LogoutOutlined'} 
         info="退出登录" />
     ),
@@ -100,12 +99,18 @@ interface MyInfoDropdownProps
 }
 
 const MyInfoDropdown: FunctionComponent<MyInfoDropdownProps> = ({ className }) => {
+  const onClick: MenuProps['onClick'] = ({ key }) => {
+    if (key === '8') {
+      signUserOut()
+    }
+  };
+
   return (
     <Dropdown
       className={cn("", className)}
       placement="bottom"
       arrow={{ pointAtCenter: true }}
-      menu={{ items }}>
+      menu={{ items, onClick }}>
       <a onClick={(e) => e.preventDefault()}>
         <UserOutlined />
         <span className="text-sm ml-1">尊敬的会员</span>

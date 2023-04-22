@@ -42,14 +42,14 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
               className="w-40 h-12 bg-white bg-opacity-40 rounded-md overflow-hidden mt-2 flex flex-row"
               key={hotel.hotelName}>
               <Image
-                className="rounded-md overflow-hidden"
+                className="rounded-md max-w-[45px] overflow-hidden"
                 style={{ margin: '3px 3px', width: "auto", height: "auto"}}
                 src={hotel.hotelImgUrl}
                 alt=""
-                width={40}
+                width={50}
                 height={40}
               />
-              <div className="flex flex-col mx-1 my-auto">
+              <div className="flex flex-col ml-1 mr-1 my-auto">
                 <span className="w-24 text-slate-50 text-xs truncate">{hotel.hotelName}</span>
                 <span className="text-slate-50 text-xs">￥<span className="text-sm font-bold">{hotel.hotelStartingPrice}</span>起</span>
               </div>

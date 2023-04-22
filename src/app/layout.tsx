@@ -19,14 +19,13 @@ export default async function RootLayout({
   const menus = await getMenus();
   // 获取会话信息，判断用户是否登录
   const session = await getServerSession(authOptions)
-
+  
   return (
     <html
       lang='en'
       className={cn('bg-white text-slate-900 antialiased', inter.className)}>
       <body className='min-h-screen bg-white dark:bg-slate-900 antialiased flex flex-row'>
         <Providers>
-
           <Menu menus={menus} />
 
           <div className="w-screen h-full lg:pl-40">

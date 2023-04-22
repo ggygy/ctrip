@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsopen } from "@/lib/store/menuStateSlice";
 import {
@@ -27,6 +27,11 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
   const [isHover, setIsHover] = useState(false);
 
   const [selectedKey, setSelectedKey] = useState("酒店");
+  const [currentWidth, setCurrentWidth] = useState<boolean>(true)
+  
+  useEffect(() => {
+    setCurrentWidth(window.screen.width > 1000 ? true : false)
+  }, [isOpen])
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -38,7 +43,7 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
     }, 100);
   };
 
-  return isOpen ? (
+  return isOpen || currentWidth ? (
     <div
       className={cn(
         "bg-white dark:bg-slate-900 dark:border-slate-900 overflow-y-auto z-10 flex flex-col w-full h-full fixed lg:w-36 lg:border",
@@ -102,7 +107,9 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
                 MenuItemInfo={item}
                 iScollapsed={collapsed || isHover}
                 isShow={selectedKey === item.title}
-                onClick={() => toggleSelectedKey(item)}
+                onClick={() => {
+                  toggleSelectedKey(item)
+                }}
               ></MenuItem>
             </div>
           );
