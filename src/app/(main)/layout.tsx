@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import Providers from '@/components/Providers'
-import { getMenus } from './api/menus/fetchMenus'
+import { getMenus } from '../api/menus/fetchMenus'
 import { cn } from '@/lib/utils'
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
