@@ -17,7 +17,7 @@ export async function getHotelRecommends(city: string) {
       picPath: picPath[Random.integer(0, 3)],
       hotelName: city + Random.ctitle(2, 5) + "酒店",
       star: 4,
-      grade: Random.float(4, 5, 0, 1),
+      grade: Random.float(4, 4, 1, 1),
       rate: "超棒",
       commentsNum: Random.integer(100, 5000),
       price: Random.integer(100, 5000),
