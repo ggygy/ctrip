@@ -5,6 +5,7 @@ import Footers from "./ui/footers";
 import ServerUpdate from "./ui/InternationalPage/ServerUpdate";
 import InternationalRecomm from "./ui/InternationalPage/InternationRecomm";
 import { hotelRecommend } from "@/app/api/hotelRecommend/hotelRecommend";
+import RegionSelect from "./ui/InternationalPage/regionSelect";
 
 interface InternationalProps {
   data: hotelRecommend[];
@@ -26,6 +27,7 @@ const International: FunctionComponent<InternationalProps> = (props) => {
          */}
         <ServerUpdate />
         <InternationalRecomm data={data} />
+        <RegionSelect />
         <Footers />
       </div>
     </>

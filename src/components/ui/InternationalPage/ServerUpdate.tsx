@@ -19,7 +19,7 @@ const ServerUpdate: FunctionComponent<ServerUpdateProps> = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-between items-center mt-10">
       <div className="text-3xl font-bold">酒店服务升级</div>
       <div className="flex flex-nowrap">
         {data.map((i) => (

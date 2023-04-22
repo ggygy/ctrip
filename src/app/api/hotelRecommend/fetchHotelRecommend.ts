@@ -5,7 +5,9 @@ import type { hotelRecommend } from "./hotelRecommend";
 import "server-only";
 
 export async function getHotelRecommends(city: string) {
-  const res = await fetch(`${getBaseUrl()}/api/hotelRecommend?city=${city}`, { next: { revalidate: 60 } });
+  const res = await fetch(`${getBaseUrl()}/api/hotelRecommend?city=${city}`, {
+    next: { revalidate: 60 },
+  });
 
   if (!res.ok) {
     // Render the closest `error.js` Error Boundary

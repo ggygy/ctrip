@@ -67,7 +67,7 @@ const TravelCard: FunctionComponent<TravelCardProps> = (props) => {
             <div className="text-xs font-light text-blue-600 mt-[6px]">起</div>
           </div>
           {data.cxChoice ? (
-            <div className="font-normal text-sm text-gray-700 flex justify-end">
+            <div className="font-normal text-sm text-gray-700  min-w-[36px] flex justify-start">
               {data.discount}折
             </div>
           ) : null}

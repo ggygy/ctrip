@@ -35,14 +35,17 @@ const GroupSelect: FunctionComponent<GroupSelectProps> = () => {
   };
   return (
     <div className="flex flex-nowrap">
-      <div>星级/钻级</div>
+      <div className="mt-2">星级/钻级</div>
       <div className="flex flex-nowrap cursor-pointer">
         {startDatas.map((i) => (
           <div
-            className={cn("flex justify-center items-center mx-2  text-xs", {
-              "bg-orange-400 text-white": value.includes(i.value),
-              "bg-gray-100 text-black": !value.includes(i.value),
-            })}
+            className={cn(
+              "flex justify-center items-center mx-2  text-xs p-2",
+              {
+                "bg-orange-400 text-white": value.includes(i.value),
+                "bg-gray-100 text-black": !value.includes(i.value),
+              }
+            )}
             key={i.value}
             onClick={() => changeSelect(i.value)}
           >
