@@ -26,18 +26,18 @@ const InternationalRecomm: FunctionComponent<InternationalRecommProps> = (
     });
   };
   return (
-    <div className="w-full flex flex-col  mt-10">
-      <div className="text-3xl font-bold flex justify-center items-center">
+    <div className="w-full flex flex-col  mt-6">
+      <div className=" my-4 lg:text-3xl text-xl font-bold flex justify-center items-center dark:text-white">
         酒店推荐
       </div>
-      <div className="w-full">
+      <div className="w-full my-4">
         <HotelSelect
           selectedSite={selectedSite}
           setselectedSite={setselectedSite}
           getHotelData={getHotelData}
         />
       </div>
-      <div className="flex flex-nowrap justify-center items-center">
+      <div className="flex lg:flex-row lg:flex-nowrap flex-col justify-center items-center">
         {hotelData.map((item, index) => (
           <HotelCard key={index} data={item} isHover={false} />
         ))}

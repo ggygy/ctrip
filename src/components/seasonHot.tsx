@@ -63,7 +63,6 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
           <span className="text-orange-300">热推</span>
         </div>
         <Select
-          className="dark:bg-gray-600"
           open={open}
           value={othersite}
           onClick={() => setopen(true)}

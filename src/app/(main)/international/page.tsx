@@ -1,10 +1,10 @@
 // import International from "@/components/International";
 
+import { getHotelRecommends } from "@/app/api/hotelRecommend/getHotelRecommend";
 import International from "@/components/International";
-import { getHotelRecommends } from "../api/hotelRecommend/fetchHotelRecommend";
 
 export default async function Home() {
-  const hotelRecommends = await getHotelRecommends("上海");
+  const hotelRecommends = await getHotelRecommends("新加坡");
 
   return (
     <div className="w-full h-full">

@@ -12,12 +12,10 @@ export const HotelInput = (props: HotelInputType) => {
   const [open, setopen] = useState<boolean>(false);
   const placeRender = () => {
     return (
-      <div className={cn(" bg-white block rounded-lg z-50 ")}>
+      <div className={cn(" bg-white block rounded-lg z-50")}>
         {places.map((place, index) => (
           <div key={index}>
-            <div className="bg-gray-200 text-left p-1 rounded-md">
-              {place.desc}
-            </div>
+            <div className="bg-gray-200 text-left p-1">{place.desc}</div>
             <ul>
               {place.data.map((d, index) => (
                 <li
@@ -68,7 +66,7 @@ export const HotelInput = (props: HotelInputType) => {
         style={{
           fontWeight: "700",
         }}
-        className=" w-[90%] pt-7 px-4 font-bold "
+        className=" w-[90%] pt-7 px-4 font-bold text-[19px]"
         dropdownRender={placeRender}
       />
     </>

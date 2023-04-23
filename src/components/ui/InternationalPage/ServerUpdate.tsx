@@ -19,16 +19,18 @@ const ServerUpdate: FunctionComponent<ServerUpdateProps> = () => {
     },
   ];
   return (
-    <div className="w-full flex flex-col justify-between items-center mt-10">
-      <div className="text-3xl font-bold">酒店服务升级</div>
-      <div className="flex flex-nowrap">
+    <div className="w-full flex flex-col justify-between items-center mt-6">
+      <div className="lg:text-3xl text-xl mt-8 mb-4 font-bold dark:text-white ">
+        酒店服务升级
+      </div>
+      <div className="flex lg:flex-nowrap lg:flex-row flex-wrap flex-col">
         {data.map((i) => (
           <div
             key={i.desc}
             className="border-1 w-72 h-28 flex flex-col justify-center items-center"
           >
             <Image src={i.src} alt="" width={48} height={48} />
-            <div className="text-sm">{i.desc}</div>
+            <div className="my-4 text-sm dark:text-white">{i.desc}</div>
           </div>
         ))}
       </div>
