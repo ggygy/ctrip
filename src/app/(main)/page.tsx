@@ -1,4 +1,4 @@
-import MainContent from "@/components/mainContent";
+import MainContent from "@/components/MainContent";
 import type { Metadata } from "next";
 
 import { getHotelRecommends } from "@/api/hotelRecommend/fetchHotelRecommend";

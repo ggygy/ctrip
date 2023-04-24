@@ -1,6 +1,6 @@
 "use client";
 
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import HotelRecommend from "@/components/hotelRecommend";
 import SeasonHot from "@/components/seasonHot";
 import MarketPlayer from "@/components/MarketPlayer";

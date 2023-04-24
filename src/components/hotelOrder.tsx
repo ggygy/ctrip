@@ -1,7 +1,7 @@
 "use client";
 import { DatePicker, Input } from "antd";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HotelInput } from "./ui/HotelInput";
 import GuestSelect from "./ui/GuestSelect";
 import MultiSelect from "./ui/multiSelect";
@@ -21,6 +21,11 @@ export default function HotelOrder() {
   const [hotelStart, setHotelStart] = useState("不限");
   const [extraInfo, setExtraInfo] = useState("不限");
   const { isOpen } = useSelector((store: any) => store.menuState);
+  const [currentWidth, setCurrentWidth] = useState<boolean>(true)
+
+  useEffect(() => {
+    setCurrentWidth(window.screen.width > 1000 ? true : false)
+  }, [isOpen])
 
   const placeSearch = () => {
     const data = {
@@ -36,8 +41,8 @@ export default function HotelOrder() {
       className={cn(
         "bg-gradient-to-r from-primary to-white justify-center items-center relative  rounded-md border-blue-100 border-2",
         {
-          "h-64": isOpen,
-          "h-[550px]": !isOpen,
+          "h-64": currentWidth,
+          "h-[550px]": !currentWidth,
         }
       )}
     >
@@ -60,7 +65,7 @@ export default function HotelOrder() {
           className="absolute top-5 right-3 "
         />
       </div>
-      {isOpen ? (
+      {isOpen || currentWidth ? (
         <div className="h-16 w-11/12  bg-white my-3 mx-5 rounded-md">
           <div className="flex flex-wrap rounded-md w-full h-full">
             <div className="flex flex-wrap w-1/2 border-r-[1px] border-gray-100">
@@ -110,7 +115,7 @@ export default function HotelOrder() {
           </div>
         </div>
       )}
-      {isOpen ? (
+      {isOpen || currentWidth ? (
         <div className="flex h-16 my-3 mx-5 rounded-md w-11/12">
           <div className="flex flex-wrap rounded-md w-3/4 h-full bg-white">
             <div className="rounded-md w-1/3 h-full border-r-[1px]">

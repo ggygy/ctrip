@@ -21,7 +21,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
   const getSeasonHotData = (currentCity: string) => {
     axios({
       method: "get",
-      url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=group/`,
+      url: `http://localhost:3000/api/seasonHot?city=${currentCity}&key=group/`,
       responseType: "json",
     }).then(function (response) {
       // console.log("response.data", response.data);
@@ -29,7 +29,7 @@ const SeasonHot: FunctionComponent<SeasonHotProps> = (props) => {
     });
     axios({
       method: "get",
-      url: `http://127.0.0.1:3000/api/seasonHot?city=${currentCity}&key=flight/`,
+      url: `http://localhost:3000/api/seasonHot?city=${currentCity}&key=flight/`,
       responseType: "json",
     }).then(function (response) {
       setSeasonFlight(response.data);

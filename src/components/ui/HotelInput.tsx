@@ -49,7 +49,7 @@ export const HotelInput = (props: HotelInputType) => {
         onBlur={() => {
           setTimeout(() => {
             setopen(false);
-          }, 100);
+          }, 500);
         }}
         placeholder="城市、机场、区域、地标或酒店名称"
         bordered={false}

@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { HotelInput } from "@/ui/HotelInput";
 import { Card, DatePicker, Input } from "antd";
 import GuestSelect from "@/ui/GuestSelect";
@@ -21,6 +21,13 @@ const InternationalSelect: FunctionComponent<InternationalSelectProps> = () => {
     dayjs(dayjs().add(1, "day"), dateFormat),
   ]);
   const { isOpen } = useSelector((store: any) => store.menuState);
+
+  const [currentWidth, setCurrentWidth] = useState<boolean>(true)
+
+  useEffect(() => {
+    setCurrentWidth(window.screen.width > 1000 ? true : false)
+  }, [isOpen])
+  
   const submit = () => {
     const data = {
       placeValue,
@@ -42,7 +49,7 @@ const InternationalSelect: FunctionComponent<InternationalSelectProps> = () => {
                 setValue={setPlaceValue}
               />
             </div>
-            {isOpen ? (
+            {isOpen || currentWidth ? (
               <div className="border-[1px] lg:w-3/12">
                 <DatePick
                   value={dateValue}

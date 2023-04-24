@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <div className="w-full h-full">
-      <div className="w-full h-96">
+      <div className="w-full h-full">
         <International data={hotelRecommends} />
       </div>
     </div>

@@ -5,13 +5,8 @@ import { Carousel } from "antd";
 import { rorationData } from "../../public/data/rotation";
 
 const Rotation: React.FC = () => {
-
   return (
-    <Carousel
-      autoplaySpeed={5000}
-      autoplay={true}
-      className="my-5 rounded-lg"
-    >
+    <Carousel autoplaySpeed={5000} autoplay={true} className="my-5 ">
       {rorationData.map((i, index) => {
         return (
           <a href={i.link} key={index} className="rounded-lg">
@@ -19,7 +14,8 @@ const Rotation: React.FC = () => {
               alt={i.alt}
               src={i.url}
               width={740}
-              height={90}
+              height={100}
+              className="rounded-lg"
             />
           </a>
         );

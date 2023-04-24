@@ -29,7 +29,7 @@ export default async function RootLayout({
         <Providers>
           <Menu menus={menus} />
 
-          <div className="w-screen h-full lg:pl-40 ">
+          <div className="w-full h-full lg:pl-40 ">
             <div className="mx-auto max-w-6xl space-y-4 px-2 pt-5 lg:pt-3 lg:py-5 lg:px-8">
               <Header session={session} />
 

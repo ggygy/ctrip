@@ -4,20 +4,19 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { getToken } from "next-auth/jwt";
 
-const redis = new Redis({
-  url: process.env.REDIS_URL,
-  token: process.env.REDIS_SECRET,
-});
+// const redis = new Redis({
+//   url: process.env.REDIS_URL,
+//   token: process.env.REDIS_SECRET,
+// });
 
-const ratelimit = new Ratelimit({
-  redis: redis,
-  limiter: Ratelimit.slidingWindow(500, "1 h"),
-});
+// const ratelimit = new Ratelimit({
+//   redis: redis,
+//   limiter: Ratelimit.slidingWindow(500, "1 h"),
+// });
 
 export default withAuth(async function middleware(req) {
   const pathname = req.nextUrl.pathname; // relative path
   
-
   // Manage rate limiting
   // if (pathname.startsWith("/api")) {
   //   const ip = req.ip ?? "127.0.0.1";
@@ -51,7 +50,7 @@ export default withAuth(async function middleware(req) {
       !isAuth &&
       sensitiveRoutes.some((route) => pathname.startsWith(route))
     ) {
-      return NextResponse.redirect(new URL('/login', req.url))
+      return NextResponse.redirect(new URL('/api/auth/signin?error=EmailSignin', req.url))
     }
   },
   {
@@ -66,5 +65,5 @@ export default withAuth(async function middleware(req) {
 });
 
 export const config = {
-  matcher: ["/", "/login", "/api/:path*", "/myInfo/:path*"],
+  matcher: ["/", "/international", "/api/:path*", "/myInfo/:path*"],
 };

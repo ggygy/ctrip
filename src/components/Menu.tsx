@@ -83,7 +83,7 @@ const MyMenu: FunctionComponent<MyMenuProps> = ({ menus }) => {
         <Button
           type="text"
           className={cn(
-            "block my-auto mr-1 absolute right-16 bottom-9 dark:bg-slate-700 lg:invisible"
+            "block my-auto mr-1 absolute right-12 bottom-9 dark:bg-slate-700 lg:invisible"
           )}
           icon={<CloseOutlined />}
           onClick={() => dispatch(setIsopen())}
