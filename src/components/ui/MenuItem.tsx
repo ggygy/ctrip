@@ -1,9 +1,11 @@
 import * as React from 'react'
 import Link from 'next/link'
+import { useDispatch } from "react-redux";
 import MyIcon from "@/ui/Icon";
 import { Popover } from 'antd';
 import { cn } from "@/lib/utils";
 import type { navmenu } from '../../app/api/menus/navmenu'
+import { setClose } from '@/lib/store/menuStateSlice';
 
 interface MenuItemProps
 	extends React.HtmlHTMLAttributes<HTMLDivElement> {
@@ -15,6 +17,7 @@ interface MenuItemProps
 
 const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 	({ className, children, Icon, MenuItemInfo, iScollapsed, isShow, ...props }, ref) => {
+		const dispatch = useDispatch();
 		const content = (
 			<div>
 				{MenuItemInfo && MenuItemInfo.children?.map((subItem: navmenu) => {
@@ -59,7 +62,14 @@ const MenuItem = React.forwardRef<HTMLDivElement, MenuItemProps>(
 				{(isShow && iScollapsed && MenuItemInfo.children) ?
 					<div className="flex flex-col dark:bg-slate-900 mt-1">
 						{MenuItemInfo && MenuItemInfo.children!.map(item => {
-							return <Link href={item.path} className={cn('text-sm my-1 ml-8 w-32 dark:text-slate-50 hover:text-sky-600 lg:w-16 lg:text-xs lg:break-words lg:ml-9')} key={item.title + item.id}>{item.title}</Link>
+							return <Link 
+							href={item.path} 
+							className={cn('text-sm my-1 ml-8 w-32 dark:text-slate-50 hover:text-sky-600 lg:w-16 lg:text-xs lg:break-words lg:ml-9')} key={item.title + item.id}
+							onClick={() => {
+								setTimeout(() => {
+									dispatch(setClose())
+								}, 800);
+							}}>{item.title}</Link>
 						})}
 					</div>
 					: null}

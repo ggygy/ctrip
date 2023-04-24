@@ -1,8 +1,9 @@
 import MainContent from "@/components/mainContent";
 import type { Metadata } from "next";
-import { getSeasonHot } from "./api/seasonHot/fetchSeasonHot";
-import { getHotelRecommends } from "./api/hotelRecommend/fetchHotelRecommend";
-import { getMarketData } from './api/market/getMarketData'
+
+import { getHotelRecommends } from "@/api/hotelRecommend/fetchHotelRecommend";
+import { getMarketData } from '@/api/market/getMarketData'
+import { getSeasonHot } from "@/api/seasonHot/fetchSeasonHot";
 
 export const metadata: Metadata = {
   title: "仿携程PC大首页",

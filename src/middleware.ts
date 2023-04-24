@@ -37,7 +37,7 @@ export default withAuth(async function middleware(req) {
     const isAuth = !!token
     const isAuthPage = req.nextUrl.pathname.startsWith('/login')
 
-    const sensitiveRoutes = ['/dashboard']
+    const sensitiveRoutes = ['/myInfo']
 
     if (isAuthPage) {
       if (isAuth) {
@@ -66,5 +66,5 @@ export default withAuth(async function middleware(req) {
 });
 
 export const config = {
-  matcher: ["/", "/login", "/api/:path*"],
+  matcher: ["/", "/login", "/api/:path*", "/myInfo/:path*"],
 };

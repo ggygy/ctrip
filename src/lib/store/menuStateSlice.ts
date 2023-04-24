@@ -14,15 +14,18 @@ export const MenuStateSlice = createSlice({
 
   // 定义 reducers 并生成关联的操作
   reducers: {
-    // 添加新的shopItem
+    // 显示 | 关闭菜单栏
     setIsopen: state => {
       state.isOpen = !state.isOpen;
+    },
+    setClose: state => {
+      state.isOpen = false;
     },
   },
 });
 
 // 导出的方法
-export const {setIsopen} = MenuStateSlice.actions;
+export const {setIsopen, setClose} = MenuStateSlice.actions;
 
 // 默认导出
 export default MenuStateSlice.reducer;
