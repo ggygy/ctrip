@@ -470,16 +470,16 @@ export const copyrightData = [
     index: 1,
     data: [
       {
-        title: " Copyright©1999-2023, ctrip.com. All rights reserved. ",
+        title: " Copyright©2023-2023, pengyuanfan.top. All rights reserved. ",
         href: "/",
       },
       {
-        title: " ICP证：沪B2-20050130 ",
+        title: " ICP证：皖ICP备2022009921号-1 ",
         href: "https://pages.c-ctrip.com/nfes/pchome/icp.pdf?t=20220325",
       },
 
       {
-        title: " 沪ICP备08023580号-3",
+        title: " 皖ICP备2022009921号-1 ",
         href: "https://pages.c-ctrip.com/nfes/pchome/icp.pdf?t=20220325",
       },
     ],
@@ -488,7 +488,7 @@ export const copyrightData = [
     index: 2,
     data: [
       {
-        title: " 沪公网备31010502002731号",
+        title: " 皖ICP备2022009921号-1 ",
         href: "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010502002731",
       },
       {
