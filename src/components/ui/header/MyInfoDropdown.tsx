@@ -7,11 +7,13 @@ import {
 } from "@ant-design/icons";
 import { cn } from "@/lib/utils";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 
 interface OrderItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
-  iconName: any,
+  iconName: any
   info: string
+  href: string
 }
 
 const signUserOut = async () => {
@@ -21,12 +23,12 @@ const signUserOut = async () => {
   }
 }
 
-const OrederItem: FunctionComponent<OrderItemProps> = ({ iconName, info }) => {
+const OrederItem: FunctionComponent<OrderItemProps> = ({ iconName, info, href }) => {
   return (
-    <div className="flex flex-row my-auto text-xs rounded-2xl  hover:text-sky-500">
+    <Link href={href} className="flex flex-row my-auto text-xs rounded-2xl  hover:text-sky-500">
       <div className="my-auto px-1 text-sm"><MyIcon className={''} name={iconName} /></div>
       <span className="px-1 mr-1 py-1">{info}</span>
-    </div>
+    </Link>
   )
 }
 
@@ -49,31 +51,31 @@ const items: MenuProps['items'] = [
   },
   {
     label: (
-      <OrederItem iconName={'GoldFilled'} info="我的积分" />
+      <OrederItem iconName={'GoldFilled'} info="我的积分" href="/myInfo/memberPoints"/>
     ),
     key: '2',
   },
   {
     label: (
-      <OrederItem iconName={'ShoppingFilled'} info="我的钱包" />
+      <OrederItem iconName={'ShoppingFilled'} info="我的钱包" href="/myInfo/wallet"/>
     ),
     key: '3',
   },
   {
     label: (
-      <OrederItem iconName={'HeartFilled'} info="我的收藏" />
+      <OrederItem iconName={'HeartFilled'} info="我的收藏" href="/myInfo/collection"/>
     ),
     key: '4',
   },
   {
     label: (
-      <OrederItem iconName={'CreditCardFilled'} info="常用信息" />
+      <OrederItem iconName={'CreditCardFilled'} info="常用信息" href="/myInfo/memberInformation"/>
     ),
     key: '5',
   },
   {
     label: (
-      <OrederItem iconName={'ShopFilled'} info="会员商城" />
+      <OrederItem iconName={'ShopFilled'} info="会员商城" href="/myInfo/memberMall"/>
     ),
     key: '6',
   },
@@ -87,7 +89,8 @@ const items: MenuProps['items'] = [
     label: (
       <OrederItem 
         iconName={'LogoutOutlined'} 
-        info="退出登录" />
+        info="退出登录" 
+        href="/"/>
     ),
     key: '8',
   },

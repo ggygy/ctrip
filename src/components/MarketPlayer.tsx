@@ -28,7 +28,7 @@ export const MarketContainer: FunctionComponent<MarketContainerProps> = ({ cityN
   return (
     <div
       className={cn('w-full h-auto flex flex-row', className)}
-      style={{ background: `url("${cityImgUrl}") center center / contain no-repeat`, height: '616px' }}>
+      style={{ background: `url("${cityImgUrl}") center center / contain no-repeat`,width: '400px', height: '636px' }}>
       <div className="relative top-5 left-5 w-36 h-10 flex flex-col">
         <span className="text-slate-50 text-sm">{cityName}酒店口碑榜</span>
         <span className="text-slate-50 text-sm">{cityTem.Lb}°C~{cityTem.Ub}°C</span>

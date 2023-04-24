@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { DatabaseFilled, CaretDownFilled } from '@ant-design/icons';
 import { MenuProps } from 'antd';
 import { Dropdown, message } from 'antd';
+import { useRouter } from "next/navigation";
 
 interface OrderItemProps {
   iconName: any,
@@ -23,31 +24,31 @@ const items: MenuProps['items'] = [
     label: (
       <OrederItem iconName={'RocketOutlined'} info="机票+相关订单" />
     ),
-    key: '1',
+    key: '/myInfo/order/flight',
   },
   {
     label: (
       <OrederItem iconName={'BankOutlined'} info="酒店订单" />
     ),
-    key: '2',
+    key: '/myInfo/order/hotel',
   },
   {
     label: (
       <OrederItem iconName={'FlagOutlined'} info="旅游订单" />
     ),
-    key: '3',
+    key: '/myInfo/order/trip',
   },
   {
     label: (
       <OrederItem iconName={'CarOutlined'} info="火车票订单" />
     ),
-    key: '4',
+    key: '/myInfo/order/train',
   },
   {
     label: (
       <OrederItem iconName={'UnorderedListOutlined'} info="全部订单" />
     ),
-    key: '5',
+    key: '/myInfo/order/all',
   },
   {
     label: (
@@ -58,7 +59,6 @@ const items: MenuProps['items'] = [
   {
     label: (
       <OrederItem iconName={'MobileOutlined'} info="手机号查询订单" />
-
     ),
     key: '7',
   },
@@ -69,14 +69,17 @@ interface OrderProps {
 }
 
 const Order: FunctionComponent<OrderProps> = () => {
+  const router = useRouter();
 
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    message.info(`Click on item ${key}`);
+    if (key.length > 3) {
+      router.push(key)
+    }
   };
 
   return (
     <Dropdown
-      className="my-auto ml-5 h-5 text-sm dark:text-slate-50 hover:text-sky-500"
+      className="my-auto ml-5 h-5 text-sm truncate dark:text-slate-50 hover:text-sky-500"
       placement="bottom"
       arrow={{ pointAtCenter: true }}
       menu={{ items, onClick }}>
