@@ -8,39 +8,39 @@ import { cn } from '@/lib/utils'
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 // {/* @ts-expect-error Server Component */}
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const menus = await getMenus();
   // 获取会话信息，判断用户是否登录
-  const session = await getServerSession(authOptions)
-  
+  const session = await getServerSession(authOptions);
+
   return (
     <html
-      lang='en'
-      className={cn('bg-white text-slate-900 antialiased', inter.className)}>
-      <body className='min-h-screen bg-white dark:bg-slate-900 antialiased flex flex-row'>
+      lang="en"
+      className={cn("bg-white text-slate-900 antialiased", inter.className)}
+    >
+      <body className="min-h-screen bg-white dark:bg-slate-900 antialiased flex flex-row">
         <Providers>
           <Menu menus={menus} />
 
-          <div className="w-screen h-full lg:pl-40">
+          <div className="w-screen h-full lg:pl-40 ">
             <div className="mx-auto max-w-6xl space-y-4 px-2 pt-5 lg:pt-3 lg:py-5 lg:px-8">
-              <Header session={session}/>
+              <Header session={session} />
 
               <main>{children}</main>
 
               {/* Allow more height for mobile menu on mobile */}
-              <div className='h-5 md:hidden' />
+              <div className="h-5 md:hidden" />
             </div>
           </div>
         </Providers>
-
       </body>
     </html>
-  )
+  );
 }

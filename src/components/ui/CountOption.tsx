@@ -13,7 +13,7 @@ interface CountOptionProps {
 const CountOption: FunctionComponent<CountOptionProps> = (props) => {
   const { count, setCount, title, subtitle, mincount, maxcount } = props;
   return (
-    <div className="flex flex-nowrap justify-between">
+    <div className="flex flex-nowrap justify-between my-2">
       <div className="flex  text-base items-center flex-nowrap">
         {title}
         <div className="text-gray-400 text-xs">{subtitle}</div>

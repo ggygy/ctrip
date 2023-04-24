@@ -44,7 +44,6 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
       </div>
       <div className="flex justify-end lg:ml-auto bg-white ml-1 dark:bg-slate-900">
         <Radio.Group
-          defaultValue="a"
           value={selectedSite}
           onChange={(e) => {
             setselectedSite(e.target.value);
@@ -59,7 +58,7 @@ const HotelMenu: FunctionComponent<HotelMenuProps> = (props) => {
           <Radio.Button value={othersite}>{othersite}</Radio.Button>
         </Radio.Group>
 
-        <div className="w-15 h-8 overflow-hidden rounded-md hover:bg-blue-100 dark:bg-gray-200">
+        <div className="w-15 h-8 overflow-hidden hover:bg-blue-100 dark:bg-gray-200">
           <Select
             open={open}
             value={"更多"}

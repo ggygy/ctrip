@@ -7,13 +7,30 @@ import GuestSelect from "./ui/GuestSelect";
 import MultiSelect from "./ui/multiSelect";
 import { useSelector } from "react-redux";
 import { cn } from "@/lib/utils";
-
+import DatePick from "./ui/datePick";
+import dayjs from "dayjs";
+import Link from "next/link";
+const dateFormat = "MM月DD日";
 export default function HotelOrder() {
-  const { RangePicker } = DatePicker;
   const [placeValue, setPlaceValue] = useState("天津");
+  const [dateValue, setDateValue] = useState<any>([
+    dayjs(dayjs(), dateFormat),
+    dayjs(dayjs().add(1, "day"), dateFormat),
+  ]);
+  const [roomData, setRoomData] = useState();
+  const [hotelStart, setHotelStart] = useState("不限");
+  const [extraInfo, setExtraInfo] = useState("不限");
   const { isOpen } = useSelector((store: any) => store.menuState);
-  const placeSearch = () => {};
 
+  const placeSearch = () => {
+    const data = {
+      placeValue,
+      dateValue,
+      roomData,
+      hotelStart,
+      extraInfo,
+    };
+  };
   return (
     <div
       className={cn(
@@ -47,7 +64,7 @@ export default function HotelOrder() {
         <div className="h-16 w-11/12  bg-white my-3 mx-5 rounded-md">
           <div className="flex flex-wrap rounded-md w-full h-full">
             <div className="flex flex-wrap w-1/2 border-r-[1px] border-gray-100">
-              <div className="rounded-md w-full">
+              <div className="rounded-md w-full fontlarge">
                 <HotelInput
                   desc={"目的地/酒店名称"}
                   value={placeValue}
@@ -56,17 +73,13 @@ export default function HotelOrder() {
               </div>
             </div>
             <div className="w-1/2 h-full">
-              <RangePicker
-                suffixIcon={null}
-                bordered={false}
-                className="w-full h-full"
-              />
+              <DatePick value={dateValue} setValue={setDateValue} />
             </div>
           </div>
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center  w-5/6 ">
-          <div className="bg-white w-full ml-16 rounded-md">
+          <div className="bg-white w-full ml-16 rounded-md fontlarge">
             <HotelInput
               desc={"目的地/酒店名称"}
               value={placeValue}
@@ -76,15 +89,23 @@ export default function HotelOrder() {
           <div className=" w-full  ml-16">
             <div className="flex flex-col my-2 mb-2 rounded-md bg-white">
               <label className=" text-gray-500 text-sm text-ellipsis mt-1 ml-1">
-                开始日期
+                入住
               </label>
-              <DatePicker bordered={false} />
+              <DatePicker
+                bordered={false}
+                defaultValue={dayjs()}
+                format={dateFormat}
+              />
             </div>
             <div className="flex flex-col mb-2 rounded-md bg-white">
               <label className=" text-gray-500 text-sm text-ellipsis mt-1 ml-1">
-                结束日期
+                退房
               </label>
-              <DatePicker bordered={false} />
+              <DatePicker
+                bordered={false}
+                defaultValue={dayjs().add(1, "day")}
+                format={dateFormat}
+              />
             </div>
           </div>
         </div>
@@ -93,65 +114,79 @@ export default function HotelOrder() {
         <div className="flex h-16 my-3 mx-5 rounded-md w-11/12">
           <div className="flex flex-wrap rounded-md w-3/4 h-full bg-white">
             <div className="rounded-md w-1/3 h-full border-r-[1px]">
-              <GuestSelect />
+              <GuestSelect setRoom={setRoomData} />
             </div>
 
             <div className="rounded-md w-1/3 h-full">
-              <MultiSelect desc="酒店级别" defaultValue="" />
+              <MultiSelect
+                desc="酒店级别"
+                defaultValue=""
+                setHotelStart={setHotelStart}
+              />
             </div>
-            <div className="rounded-md w-1/3 h-full flex flex-col">
-              <label className=" text-gray-500 text-sm text-ellipsis mt-1 ml-1">
+            <div className="rounded-md w-1/3 h-full flex flex-col ">
+              <label className=" text-gray-500  text-ellipsis text-sm mt-1 ml-1">
                 关键词(选填)
               </label>
-              <div>
+              <div className="fontlarge">
                 <Input
                   placeholder="机场火车站酒店名称"
                   className="h-8"
                   bordered={false}
+                  onChange={(e) => setExtraInfo(e.currentTarget.value)}
                 ></Input>
               </div>
             </div>
           </div>
           <div className="rounded-md w-1/4 h-full  text-center">
-            <button
-              onClick={placeSearch}
-              className="flex flex-wrap rounded-md justify-center bg-gradient-to-r from-blue-400 to-blue-500 w-32 h-full ml-4"
-            >
-              <span className="text-2xl font-medium h-6 leading-6 text-white mt-5 ml-3 flex flex-wrap justify-center">
-                搜索
-              </span>
-            </button>
+            <Link href={"https://hotels.ctrip.com/hotels/list"}>
+              <button
+                // onClick={placeSearch}
+                className="flex flex-wrap rounded-md justify-center bg-gradient-to-r from-blue-400 to-blue-500 w-32 h-full ml-4"
+              >
+                <span className="text-2xl font-medium h-6 leading-6 text-white mt-5 ml-3 flex flex-wrap justify-center">
+                  搜索
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
       ) : (
         <div className="flex flex-col rounded-md w-5/6 ">
           <div className="rounded-md w-full ml-8 mb-2 bg-white">
-            <GuestSelect />
+            <GuestSelect setRoom={setRoomData} />
           </div>
           <div className="rounded-md w-full ml-8 mb-2 bg-white">
-            <MultiSelect desc="酒店级别" defaultValue="" />
+            <MultiSelect
+              desc="酒店级别"
+              defaultValue=""
+              setHotelStart={setHotelStart}
+            />
           </div>
           <div className="rounded-md flex flex-col ml-8 mb-2 bg-white w-full">
             <label className=" text-gray-500 text-sm text-ellipsis mt-1 ml-1">
               关键词(选填)
             </label>
-            <div>
+            <div className="fontlarge">
               <Input
                 placeholder="机场火车站酒店名称"
-                className="h-8"
+                className="h-8  "
                 bordered={false}
+                onChange={(e) => setExtraInfo(e.currentTarget.value)}
               ></Input>
             </div>
           </div>
           <div className="rounded-md h-full  text-center flex justify-center items-center">
-            <button
-              onClick={placeSearch}
-              className="flex flex-wrap rounded-md justify-center bg-gradient-to-r from-blue-400 to-blue-500 w-32 h-full ml-4"
-            >
-              <span className="text-2xl font-medium h-10 mt-3 leading-6 text-white ml-3 flex flex-wrap justify-center">
-                搜索
-              </span>
-            </button>
+            <Link href={"https://hotels.ctrip.com/hotels/list"}>
+              <button
+                // onClick={placeSearch}
+                className="flex flex-wrap rounded-md justify-center bg-gradient-to-r from-blue-400 to-blue-500 w-32 h-full ml-4"
+              >
+                <span className="text-2xl font-medium h-10 mt-3 leading-6 text-white ml-3 flex flex-wrap justify-center">
+                  搜索
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
       )}

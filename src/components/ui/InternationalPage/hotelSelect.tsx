@@ -39,14 +39,14 @@ const HotelSelect: FunctionComponent<HotelSelectProps> = (props) => {
   };
   const moreRender = () => {
     return (
-      <div className="overflow-scroll cursor-pointer flex flex-wrap max-h-[300px] dark:bg-slate-700">
+      <div className="overflow-scroll cursor-pointer flex flex-wrap max-h-[300px] ">
         {data.map((i, index) => (
           <div
             key={index}
             onClick={() => {
               handleMore(i);
             }}
-            className="hover:bg-blue-100 w-20 leading-8 justify-center flex"
+            className="hover:bg-blue-100 w-20 leading-8 justify-center flex "
           >
             <span>{i}</span>
           </div>
@@ -56,14 +56,14 @@ const HotelSelect: FunctionComponent<HotelSelectProps> = (props) => {
   };
 
   return (
-    <div className="w-full  h-10 flex justify-center items-center">
-      <div className=" bg-white ml-1 dark:bg-slate-900 flex ">
-        <div className="flex flex-row flex-nowrap cursor-pointer">
+    <div className="w-full flex justify-center items-center mx-8">
+      <div className=" bg-white ml-1 dark:bg-slate-700 flex ">
+        <div className="flex flex-row lg:flex-nowrap flex-wrap cursor-pointer justify-start">
           {cityOption.map((city) => (
             <div
               key={city}
               className={cn(
-                "mx-2 w-20 h-8 text-center text-sm flex justify-center items-center",
+                "m-2 w-20 h-8 text-center text-sm flex justify-center items-center dark:bg-white",
                 {
                   "border-[1px] ": selectedSite != city,
                   "text-blue-500 bg-blue-100 ": selectedSite == city,
@@ -77,34 +77,33 @@ const HotelSelect: FunctionComponent<HotelSelectProps> = (props) => {
               {city}
             </div>
           ))}
-        </div>
-
-        <div className="w-20 h-8 overflow-hidden border-[1px] hover:bg-blue-100 dark:bg-gray-200">
-          <Select
-            open={open}
-            value={"更多"}
-            onClick={() => setOpen(true)}
-            onBlur={() => {
-              setTimeout(() => {
-                setOpen(false);
-              }, 100);
-            }}
-            placement="bottomLeft"
-            bordered={false}
-            dropdownMatchSelectWidth={false}
-            dropdownStyle={{
-              width: "30%",
-            }}
-            style={{ border: 0 }}
-            suffixIcon={
-              open ? (
-                <CaretUpOutlined style={{ color: "#007aff" }} />
-              ) : (
-                <CaretDownOutlined />
-              )
-            }
-            dropdownRender={moreRender}
-          />
+          <div className="lg:mt-0 mt-2 ml-2 w-20 h-8 overflow-hidden border-[1px] hover:bg-blue-100 dark:bg-gray-200">
+            <Select
+              open={open}
+              value={"更多"}
+              onClick={() => setOpen(true)}
+              onBlur={() => {
+                setTimeout(() => {
+                  setOpen(false);
+                }, 100);
+              }}
+              placement="bottomLeft"
+              bordered={false}
+              dropdownMatchSelectWidth={false}
+              dropdownStyle={{
+                width: "30%",
+              }}
+              style={{ border: 0 }}
+              suffixIcon={
+                open ? (
+                  <CaretUpOutlined style={{ color: "#007aff" }} />
+                ) : (
+                  <CaretDownOutlined />
+                )
+              }
+              dropdownRender={moreRender}
+            />
+          </div>
         </div>
       </div>
     </div>

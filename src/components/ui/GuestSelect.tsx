@@ -2,9 +2,11 @@ import { Divider, Select } from "antd";
 import { FunctionComponent, useEffect, useState } from "react";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import CountOption from "./CountOption";
-interface GuestSelectProps {}
+interface GuestSelectProps {
+  setRoom: any;
+}
 
-const GuestSelect: FunctionComponent<GuestSelectProps> = () => {
+const GuestSelect: FunctionComponent<GuestSelectProps> = ({ setRoom }) => {
   const [roomCount, setroomCount] = useState<number>(1);
   const [adultCount, setadultCount] = useState<number>(1);
   const [childCount, setchildCount] = useState<number>(0);
@@ -16,6 +18,7 @@ const GuestSelect: FunctionComponent<GuestSelectProps> = () => {
     if (adultCount > roomCount * 8) {
       setadultCount(roomCount * 8);
     }
+
     // if()
   }, [roomCount]);
 
@@ -27,14 +30,7 @@ const GuestSelect: FunctionComponent<GuestSelectProps> = () => {
     }
   });
   const selectAge = () => {
-    return (
-      <Select
-        defaultValue="<1"
-        // style={{ width: 120 }}
-        // onChange={handleChange}
-        options={option}
-      />
-    );
+    return <Select defaultValue="<1" options={option} />;
   };
   const adjustOption = () => {
     return (
@@ -83,10 +79,17 @@ const GuestSelect: FunctionComponent<GuestSelectProps> = () => {
           )}
         </div>
         <Divider style={{ margin: "0 2px" }} />
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-2 mb-1">
           <button
-            className="text-blue-500 mx-4 b-4"
-            onClick={() => setopen(false)}
+            className="text-blue-500 mx-4 b-4 "
+            onClick={() => {
+              setopen(false);
+              setRoom({
+                roomCount,
+                adultCount,
+                childCount,
+              });
+            }}
           >
             确定
           </button>
@@ -96,7 +99,7 @@ const GuestSelect: FunctionComponent<GuestSelectProps> = () => {
   };
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap fontlarge">
       <label className="absolute text-gray-500 text-sm text-ellipsis mt-2 ml-2">
         {"房间及主客"}
       </label>

@@ -8,28 +8,31 @@ interface RegionSelectProps {}
 const RegionSelect: FunctionComponent<RegionSelectProps> = () => {
   return (
     <div className="mt-10">
-      <div className="flex flex-nowrap justify-start">
+      <div className="flex lg:flex-nowrap justify-start flex-col lg:flex-row">
         <Image
           src="https://pic.c-ctrip.com/hotelinternational121211/affili_380_65.jpg"
           alt=""
           width={379}
           height={64}
-          className="mr-6"
+          className="lg:mr-6 my-3"
         />
         <Image
           src="https://pic.c-ctrip.com/hotelinternational121211/affili_380_65_2.jpg"
           alt=""
           width={379}
           height={64}
-          className="mr-6"
+          className="lg:mr-6 my-3"
         />
       </div>
       <div className="border-[1px]  mt-8">
         {regionData.map((item, index) => (
-          <div key={item.title} className="flex flex-nowrap p-1 cursor-pointer">
+          <div
+            key={item.title}
+            className="flex lg:flex-nowrap p-1 cursor-pointer"
+          >
             <div
               className={cn(
-                "  w-1/12  font-bold text-xs leading-5 text-gray-600 mt-1",
+                "w-1/12 font-bold text-xs leading-5 text-gray-600 mt-1 dark:text-white",
                 { "border-b-[1px]": index != 2 }
               )}
             >
@@ -37,7 +40,7 @@ const RegionSelect: FunctionComponent<RegionSelectProps> = () => {
             </div>
             <div
               className={cn(
-                "  w-11/12 text-xs  leading-5 text-gray-400 flex  flex-wrap",
+                "w-11/12 text-xs leading-5 text-gray-400 flex flex-wrap",
                 {
                   "border-b-[1px]": index != 2,
                 }
